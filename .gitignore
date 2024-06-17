@@ -1,0 +1,8 @@
+# build files
+bin/
+obj/
+*.make
+Makefile
+
+# vscode files
+.vscode/

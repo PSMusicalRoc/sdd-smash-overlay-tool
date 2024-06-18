@@ -22,7 +22,7 @@ project "ez-stream-tool"
     language "C++"
     cppdialect "C++17"
     objdir "obj/%{cfg.buildcfg}/"
-    targetdir "bin/%{cfg.buildcfg}"
+    targetdir "build/%{cfg.buildcfg}"
 
 files {
     "src/**.cpp",

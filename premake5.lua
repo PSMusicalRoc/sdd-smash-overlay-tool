@@ -27,7 +27,7 @@ project "sdl2"
 
     buildcommands {
         "mkdir -p vendor_install",
-        "mkdir -p vendor/sdl2/build; cd vendor/sdl2/build; ../configure --prefix=$$(pwd); make -j4; make install"
+        "mkdir -p vendor/sdl2/build; cd vendor/sdl2/build; ../configure --prefix=\"$$(pwd)\"; make -j4; make install"
     }
 
     filter "system:windows"
@@ -43,7 +43,7 @@ project "ez-stream-tool"
     cppdialect "C++17"
     objdir "obj/%{cfg.buildcfg}/"
     targetdir "build/%{cfg.buildcfg}"
-    dependson "sdl2"
+    --dependson "sdl2"
 
 files {
     "src/**.cpp",

@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-int main()
+int main(int argc, char** argv)
 {
     // init SDL backend
     if ( SDL_Init(SDL_INIT_EVERYTHING) < 0 )

@@ -13,9 +13,24 @@ imgui_params = {
     }
 }
 
+sdl_params = {
+    lib_dir = "vendor/sdl2/build/lib",
+    include_dir = "vendor/sdl2/build/include/SDL2"
+}
+
 
 workspace "ez-stream"
     configurations { "Debug", "Release" }
+
+project "sdl2"
+    kind "Makefile"
+
+    buildcommands {
+        "mkdir -p vendor_install",
+        "mkdir -p vendor/sdl2/build; cd vendor/sdl2/build; ../configure --prefix=$$(pwd); make -j4; make install"
+    }
+
+filter ""
 
 project "ez-stream-tool"
     kind "WindowedApp"
@@ -23,6 +38,7 @@ project "ez-stream-tool"
     cppdialect "C++17"
     objdir "obj/%{cfg.buildcfg}/"
     targetdir "build/%{cfg.buildcfg}"
+    dependson "sdl2"
 
 files {
     "src/**.cpp",
@@ -31,14 +47,10 @@ files {
 
 includedirs {
     "include",
-    imgui_params.includes
+    imgui_params.includes,
+    sdl_params.include_dir
 }
-
-links {
-    "SDL2"
-}
-
 
 filter "system:linux"
-    includedirs { "/usr/include/SDL2" }
+    linkoptions "`vendor/sdl2/build/bin/sdl2-config --libs`"
 

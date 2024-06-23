@@ -51,6 +51,5 @@ includedirs {
     sdl_params.include_dir
 }
 
-filter "system:linux"
-    linkoptions "`vendor/sdl2/build/bin/sdl2-config --libs`"
+linkoptions "`vendor/sdl2/build/bin/sdl2-config --libs`"
 

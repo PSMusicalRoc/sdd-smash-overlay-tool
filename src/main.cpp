@@ -4,6 +4,8 @@
 
 #include <SDL.h>
 
+#include "MainWindow.h"
+
 #include <iostream>
 
 int main(int argc, char** argv)
@@ -53,6 +55,8 @@ int main(int argc, char** argv)
     ImGui_ImplSDL2_InitForSDLRenderer( win, ren );
     ImGui_ImplSDLRenderer2_Init( ren );
 
+    MainWindow mw;
+
     SDL_Event ev;
     bool app_still_running = true;
     ImVec4 clear_color = ImVec4(0.0f, 0.0f, 0.0f, 1.00f);
@@ -76,8 +80,22 @@ int main(int argc, char** argv)
         ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
 
-        ImGui::ShowDemoWindow();
 
+        // Do all graphics calls in between here...
+
+        ImGui::ShowDemoWindow(NULL);
+
+        ImGui::Begin("TestWindow", NULL);
+
+        mw.render();
+
+        ImGui::End();
+
+        
+        
+        // ... and here.
+        
+        
         ImGui::Render();
         SDL_RenderSetScale( ren, io.DisplayFramebufferScale.x, io.DisplayFramebufferScale.y );
         SDL_SetRenderDrawColor( ren, (Uint8)(clear_color.x * 255),

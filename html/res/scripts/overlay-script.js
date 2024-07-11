@@ -48,6 +48,7 @@ function doUpdate(scInfo) {
 
 	let round = scInfo['round'];
 	let bestOf = scInfo['bestOf'];
+	let tournName = scInfo['tournName'];
 
 	let caster1 = scInfo['caster1Name'];
 	twitter1 = scInfo['caster1Twitter'];
@@ -79,15 +80,18 @@ function doUpdate(scInfo) {
 	}
 
 	
-	// var p1Characters = document.getElementsByName("p1Character");
-	// for (var i = 0; i < p1Characters.length; i++)
-	// {
-	// 	p1Characters[i].src = "res/characters/Stock Icons/" + p1Character + "/" + p1Character + " (1).png";
-	// }
+	var p1Characters = document.getElementsByName("p1Character");
+	for (var i = 0; i < p1Characters.length; i++)
+	{
+		p1Characters[i].src = "res/characters/Stock Icons/" + p1Character + "/" + p1Character + " (1).png";
+	}
 
-	// var p2Characters = document.getElementsByName("p2Character");
-	// for (var i = 0; i < p2Characters.length; i++)
-	// {
-	// 	p2Characters[i].src = "res/characters/Stock Icons/" + p2Character + "/" + p2Character + " (1).png";
-	// }
+	var p2Characters = document.getElementsByName("p2Character");
+	for (var i = 0; i < p2Characters.length; i++)
+	{
+		p2Characters[i].src = "res/characters/Stock Icons/" + p2Character + "/" + p2Character + " (1).png";
+	}
+
+	document.getElementById("tournament-name").innerHTML = tournName;
+	document.getElementById("round-name").innerHTML = round;
 }

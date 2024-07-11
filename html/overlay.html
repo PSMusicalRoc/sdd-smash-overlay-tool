@@ -147,6 +147,43 @@
             width: 95%;
             text-align: left;
         }
+
+
+
+        /* Tournament information */
+
+        #tournament-info {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30vw;
+            height: 15vh;
+            background-image: linear-gradient(to left,#9a0808, 90%, #00000000);
+        }
+
+        #tournament-name {
+            position: absolute;
+            right: 13vh;
+            top: 25%;
+            width: 90%;
+            text-align: right;
+            font-size: 20px;
+        }
+
+        #round-name {
+            position: absolute;
+            right: 13vh;
+            top: 50%;
+            width: 90%;
+            text-align: right;
+        }
+
+        #rpilogo {
+            position: absolute;
+            right: 5px;
+            top: 15%;
+            height: 70%;
+        }
     </style>
 </head>
 
@@ -161,6 +198,12 @@
         <img name="p2Character">
         <span class="" id="p2Name"></span>
         <span class="scoretext" id="p2Score"></span>
+    </div>
+
+    <div id="tournament-info">
+        <span id="tournament-name"></span>
+        <span id="round-name"></span>
+        <img id="rpilogo" src="rpilogo.png">
     </div>
     
 </body>

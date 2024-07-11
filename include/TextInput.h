@@ -8,7 +8,7 @@ private:
     std::string text;
     std::string label;
 public:
-    TextInput(std::string label);
+    TextInput(const std::string& label);
     void render();
 };
 

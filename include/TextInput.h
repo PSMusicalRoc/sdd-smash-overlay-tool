@@ -11,6 +11,8 @@ private:
 public:
     TextInput(const std::string& label = "", int width = 100);
     void render();
+    std::string getText();
+    std::string getLabel();
 };
 
 #endif

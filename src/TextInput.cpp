@@ -35,3 +35,13 @@ void TextInput::render()
     //    std::cout << this->text << std::endl;
     //}
 }
+
+std::string TextInput::getText()
+{
+    return text;
+}
+
+std::string TextInput::getLabel()
+{
+    return label;
+}

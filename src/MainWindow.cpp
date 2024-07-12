@@ -27,6 +27,16 @@ void MainWindow::render()
         if(i == 2){ImGui::SameLine();} //so that name inputs are on the same line
     }
 
+    //testing text inputs
+    if (ImGui::Button("Print Inputs"))
+    {
+        std::cout << "----Text Inputs----" << std::endl;
+        for(int i = 0; i < 4; i++)
+        {
+            std::cout << textInputs[i].getLabel() << ": " << textInputs[i].getText() << "\n" << std::endl;
+        }
+    }
+
     // 2 "name" textboxes
     // 2 "score inputs"
     // Update Button

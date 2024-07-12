@@ -57,7 +57,7 @@ int main(int argc, char** argv)
     ImGui_ImplSDLRenderer2_Init( ren );
 
     MainWindow mw;
-    TextInput in1("Test 1"), in2("Test 2");
+    //TextInput in1("Test 1"), in2("Test 2");
 
     SDL_Event ev;
     bool app_still_running = true;
@@ -90,8 +90,8 @@ int main(int argc, char** argv)
         ImGui::Begin("TestWindow", NULL);
 
         mw.render();
-        in1.render();
-        in2.render();
+        //in1.render();
+        //in2.render();
 
         ImGui::End();
 

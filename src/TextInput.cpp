@@ -4,22 +4,20 @@
 #include <iostream>
 #include "misc/cpp/imgui_stdlib.h"
 
-TextInput::TextInput(const std::string& label)
+TextInput::TextInput(const std::string& label, int width)
 {
     this->label = label;
     this->text = "";
+    this->width = width;
 }
 
 void TextInput::render()
 {
     //static std::string input = "";
     
-    // by the by, instead of doing:
-    // const char* l = &(label[0]);
-    // ... you can do:
+    ImGui::SetNextItemWidth(width);
     const char* l = label.c_str();
     ImGui::InputText(l, &(this->text));
-    //text = input;
 
 
  //for testing
@@ -30,8 +28,10 @@ void TextInput::render()
     // they have the same display label, you can append stuff
     // to it so that the underlying "name" is different
     // read more: https://github.com/ocornut/imgui/blob/master/docs/FAQ.md#q-about-the-id-stack-system
-    if (ImGui::Button("print input"))
-    {
-        std::cout << this->text << std::endl;
-    }
+    
+    //const char* buttonLabel = ("print " + label + " input").c_str();
+    //if (ImGui::Button(buttonLabel))
+    //{
+    //    std::cout << this->text << std::endl;
+    //}
 }

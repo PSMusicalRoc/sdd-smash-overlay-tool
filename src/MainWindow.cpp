@@ -1,8 +1,13 @@
 #include "MainWindow.h"
+#include "updateFunctionality/nlohmann/json.hpp"
 #include "TextInput.h"
 
 #include "imgui.h"
+#include "Update.h"
 #include <iostream>
+#include <fstream>
+
+
 MainWindow::MainWindow()
 {
     TextInput in1("Tournament", 200), in2("Bracket", 200), in3("Name 1"), in4("Name 2");
@@ -12,12 +17,13 @@ MainWindow::MainWindow()
     (this->textInputs)[3] = in4; //Player 2 name input
 }
 
-
 void MainWindow::render()
 {
     if (ImGui::Button("TestButton"))
     {
-        std::cout << "Hello World" << std::endl;
+        Update u;
+        u.update();
+
     }
 
     //render text inputs

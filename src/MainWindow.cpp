@@ -10,7 +10,7 @@
 
 MainWindow::MainWindow()
 {
-    TextInput in1("Tournament", 200), in2("Bracket", 200), in3("Name 1"), in4("Name 2");
+    TextInput in1("Tournament", 200, "tournName"), in2("Bracket", 200, "round"), in3("Name 1", 100, "p1Name"), in4("Name 2", 100, "p2Name");
     (this->textInputs)[0] = in1; //tournament name input
     (this->textInputs)[1] = in2; //bracket name input
     (this->textInputs)[2] = in3; //Player 1 name input
@@ -21,9 +21,7 @@ void MainWindow::render()
 {
     if (ImGui::Button("TestButton"))
     {
-        Update u;
-        u.update();
-
+        Update::get()->update();
     }
 
     //render text inputs

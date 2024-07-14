@@ -1,7 +1,6 @@
-#include "updateFunctionality/nlohmann/json.hpp"
+#include "Update.h"
 
 #include "imgui.h"
-#include "Update.h"
 #include <iostream>
 #include <fstream>
 

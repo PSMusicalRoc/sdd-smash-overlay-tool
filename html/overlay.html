@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ultimate Game Overlay</title>
+
+    <script src="res/scripts/overlay-script.js"></script>
+    <script src="res/scripts/gsap.min.js"></script>
+    
+
+    <style>
+
+        :root {
+            --scoreboard-top-distance: 0px;
+            --font-size-global: 40px;
+        }
+
+        @font-face {
+            font-family: "Smash";
+            src: url('res/fonts/FOT-RodinBokutohPro-UB.otf');
+        }
+       
+
+        body {
+            width: 1920px;
+            height: 1080px;
+            overflow: hidden;
+            background: transparent;
+            padding: 0px;
+            margin: 0px;
+            color: white;
+            font-family: "Smash";
+            white-space: nowrap;
+        }
+
+        .black-outline-text {
+            /* text-shadow: black 0 0 2px; */
+            -webkit-text-fill-color: white;
+            -webkit-text-stroke: 2px black;
+        }
+
+        *[name=p1Scoreboard] {
+            position: absolute;
+            top: var(--scoreboard-top-distance);
+            left: 15vw;
+            width: 35vw;
+            height: 20vh;
+            background-image: linear-gradient(red, #00000000);
+        }
+
+        #p1Name {
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            top: 25%;
+            font-size: var(--font-size-global);
+            padding: 0;
+            text-align: center;
+        }
+
+        img[name=p1Character] {
+            position: absolute;
+            height: 25%;
+            left: 1vw;
+            top: 32.5%;
+        }
+
+
+
+        /* P2 Stuff */
+        *[name=p2Scoreboard] {
+            position: absolute;
+            top: var(--scoreboard-top-distance);
+            left: 50vw;
+            width: 35vw;
+            height: 20vh;
+            background-image: linear-gradient(blue, #00000000);
+        }
+
+        #p2Name {
+            position: absolute;
+            width: 100%;
+            left: 0px;
+            top: 25%;
+            height: 100%;
+            font-size: var(--font-size-global);
+            padding: 0;
+            text-align: center;
+        }
+
+        img[name=p2Character] {
+            position: absolute;
+            height: 25%;
+            right: 1vw;
+            top: 32.5%;
+        }
+
+        /* Score stuff */
+
+        .scoretext {
+            font-size: var(--font-size-global);
+            padding: 0;
+        }
+
+        .scores {
+            position: absolute;
+            top: var(--scoreboard-top-distance);
+            left: 855px;
+        }
+
+        .scoresColor {
+            position: absolute;
+            background-color: #700000;
+            height: 55px;
+            width: 200px;
+            top: 0;
+            left: 0;
+        }
+
+        .scoresBlack {
+            position: absolute;
+            background-color: black;
+            height: 50px;
+            width: 200px;
+            top: 0;
+            left: 0;
+        }
+
+        #scoreColon {
+            position: absolute;
+            top: 0;
+            left: 95px;
+        }
+
+        #p1Score {
+            position: absolute;
+            top: 25%;
+            left: 0;
+            width: 95%;
+            text-align: right;
+        }
+
+        #p2Score {
+            position: absolute;
+            top: 25%;
+            left: 5%;
+            width: 95%;
+            text-align: left;
+        }
+
+
+
+        /* Tournament information */
+
+        #tournament-info {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 30vw;
+            height: 15vh;
+            background-image: linear-gradient(to left,#9a0808, 90%, #00000000);
+        }
+
+        #tournament-name {
+            position: absolute;
+            right: 13vh;
+            top: 25%;
+            width: 90%;
+            text-align: right;
+            font-size: 20px;
+        }
+
+        #round-name {
+            position: absolute;
+            right: 13vh;
+            top: 50%;
+            width: 90%;
+            text-align: right;
+        }
+
+        #rpilogo {
+            position: absolute;
+            right: 5px;
+            top: 15%;
+            height: 70%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div name="p1Scoreboard">
+        <img name="p1Character">
+        <span class="" id="p1Name"></span>
+        <span class="scoretext" id="p1Score"></span>
+    </div>
+    <div name="p2Scoreboard">
+        <img name="p2Character">
+        <span class="" id="p2Name"></span>
+        <span class="scoretext" id="p2Score"></span>
+    </div>
+
+    <div id="tournament-info">
+        <span id="tournament-name"></span>
+        <span id="round-name"></span>
+        <img id="rpilogo" src="rpilogo.png">
+    </div>
+    
+</body>
+</html>

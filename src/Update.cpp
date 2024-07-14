@@ -4,16 +4,35 @@
 #include <iostream>
 #include <fstream>
 
-void Update::update() {
-    std::cout << "Hello World" << std::endl;
-    using json = nlohmann::json;
 
-    std::ifstream f("src/overlay-data.json");
-    
-    json data = json::parse(f);
-    data["p1Name"] = "Tester";
-    std::ofstream out("src/overlay-data.json");
-    
-    out << std::setw(4) << data << std::endl;
+Update* Update::_reference = nullptr;
+
+Update::Update(const std::string& output_file_path)
+{
+    this->_output_file_path = output_file_path;
+    this->_data = nlohmann::json();
+}
+
+Update* Update::get()
+{
+    if (_reference == nullptr)
+    {
+        _reference = new Update();
+    }
+    return _reference;
+}
+
+void Update::destroy()
+{
+    if (_reference != nullptr)
+    {
+        delete _reference;
+        _reference = nullptr;
+    }
+}
+
+void Update::update() {
+    std::ofstream out(this->_output_file_path);
+    out << std::setw(4) << _data << std::endl;
 }
 

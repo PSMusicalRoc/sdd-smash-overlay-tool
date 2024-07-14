@@ -4,11 +4,14 @@
 #include <iostream>
 #include "misc/cpp/imgui_stdlib.h"
 
-TextInput::TextInput(const std::string& label, int width)
+#include "Update.h"
+
+TextInput::TextInput(const std::string& label, int width, const std::string& jsonLabel)
 {
     this->label = label;
     this->text = "";
     this->width = width;
+    this->jsonLabel = jsonLabel;
 }
 
 void TextInput::render()
@@ -17,7 +20,10 @@ void TextInput::render()
     
     ImGui::SetNextItemWidth(width);
     const char* l = label.c_str();
-    ImGui::InputText(l, &(this->text));
+    if (ImGui::InputText(l, &(this->text)))
+    {
+        Update::get()->set(this->jsonLabel, this->text);
+    }
 
 
  //for testing

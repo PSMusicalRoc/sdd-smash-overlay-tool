@@ -1,5 +1,4 @@
 #include "MainWindow.h"
-#include "updateFunctionality/nlohmann/json.hpp"
 #include "TextInput.h"
 
 #include "imgui.h"

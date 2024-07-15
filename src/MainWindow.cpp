@@ -16,8 +16,22 @@ MainWindow::MainWindow()
     (this->textInputs)[3] = in4; //Player 2 name input
 }
 
-void MainWindow::render()
+void MainWindow::render(SDL_Window* renderwindow)
 {
+    int flags = ImGuiWindowFlags_NoBringToFrontOnFocus |
+                ImGuiWindowFlags_NoCollapse |
+                ImGuiWindowFlags_NoMove |
+                ImGuiWindowFlags_NoResize |
+                ImGuiWindowFlags_NoTitleBar;
+    ImGui::SetNextWindowPos(ImVec2(0, 0));
+    int windowWidth, windowHeight;
+    SDL_GetWindowSize(renderwindow, &windowWidth, &windowHeight);
+    ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
+
+    ImGui::Begin("MainWindow", (bool*)NULL, flags);
+    // PLACE ALL WINDOW RENDERING CODE IN HERE
+
+    ImGui::SetCursorPos(ImVec2(40, 400));
     if (ImGui::Button("TestButton"))
     {
         Update::get()->update();
@@ -40,8 +54,6 @@ void MainWindow::render()
         }
     }
 
-    // 2 "name" textboxes
-    // 2 "score inputs"
-    // Update Button
-    // ... all in roughly the posisions they should be
+    // PLACE ALL WINDOW RENDERING CODE IN HERE
+    ImGui::End();
 }

@@ -48,6 +48,7 @@ int main(int argc, char** argv)
     IMGUI_CHECKVERSION();
     ImGui::CreateContext();
     ImGuiIO& io = ImGui::GetIO();
+    io.Fonts->AddFontFromFileTTF("res/fonts/Oswald-VariableFont_wght.ttf", 24.0f);
     // disable imgui ini
     io.IniFilename = NULL;
     
@@ -87,13 +88,9 @@ int main(int argc, char** argv)
 
         ImGui::ShowDemoWindow(NULL);
 
-        ImGui::Begin("TestWindow", NULL);
-
-        mw.render();
+        mw.render(win);
         //in1.render();
         //in2.render();
-
-        ImGui::End();
 
         
         

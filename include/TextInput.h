@@ -2,16 +2,18 @@
 #define EZSTREAM_TEXT_INPUT
 #include <string>
 
-class TextInput
+#include "Widget.h"
+
+class TextInput: public Widget
 {
 private:
     std::string text;
     std::string label;
     std::string jsonLabel;
-    int width;
+
 public:
-    TextInput(const std::string& label = "", int width = 100, const std::string& jsonLabel = "");
-    void render();
+    TextInput(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");
+    void render() override;
     std::string getText();
     std::string getLabel();
 };

@@ -6,11 +6,11 @@
 
 #include "Update.h"
 
-TextInput::TextInput(const std::string& label, int width, const std::string& jsonLabel)
+TextInput::TextInput(int x, int y, int width, const std::string& label, const std::string& jsonLabel)
+    :Widget(x, y, width, 0)
 {
     this->label = label;
     this->text = "";
-    this->width = width;
     this->jsonLabel = jsonLabel;
 }
 
@@ -18,7 +18,8 @@ void TextInput::render()
 {
     //static std::string input = "";
     
-    ImGui::SetNextItemWidth(width);
+    ImGui::SetCursorPos(ImVec2(_x, _y));
+    ImGui::SetNextItemWidth(_width);
     const char* l = label.c_str();
     if (ImGui::InputText(l, &(this->text)))
     {

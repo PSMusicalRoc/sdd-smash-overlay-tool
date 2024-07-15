@@ -2,14 +2,19 @@
 #define EZSTREAM_MAIN_WINDOW
 
 #include <SDL.h>
+#include <vector>
+#include "Widget.h"
+
 #include "TextInput.h"
 
 class MainWindow
 {
 private:
-    TextInput textInputs[4];
+    std::vector<Widget*> _widgets;
+
 public:
     MainWindow();
+    ~MainWindow();
     void render(SDL_Window* renderwindow);
 };
 

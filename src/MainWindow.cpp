@@ -9,11 +9,20 @@
 
 MainWindow::MainWindow()
 {
-    TextInput in1("Tournament", 200, "tournName"), in2("Bracket", 200, "round"), in3("Name 1", 100, "p1Name"), in4("Name 2", 100, "p2Name");
-    (this->textInputs)[0] = in1; //tournament name input
-    (this->textInputs)[1] = in2; //bracket name input
-    (this->textInputs)[2] = in3; //Player 1 name input
-    (this->textInputs)[3] = in4; //Player 2 name input
+    _widgets = {
+        new TextInput(400, 100, 200, "Tournament", "tournName"),
+        new TextInput(400, 150, 200, "Bracket", "round"),
+        new TextInput(100, 300, 100, "Name 1", "p1Name"),
+        new TextInput(800, 300, 100, "Name 2", "p2Name")
+    };
+}
+
+MainWindow::~MainWindow()
+{
+    for (Widget* w : _widgets)
+    {
+        delete w;
+    }
 }
 
 void MainWindow::render(SDL_Window* renderwindow)
@@ -38,21 +47,20 @@ void MainWindow::render(SDL_Window* renderwindow)
     }
 
     //render text inputs
-    for(int i = 0; i < 4; i++)
+    for (Widget* w : _widgets)
     {
-        textInputs[i].render();
-        if(i == 2){ImGui::SameLine();} //so that name inputs are on the same line
+        w->render();
     }
 
     //testing text inputs
-    if (ImGui::Button("Print Inputs"))
-    {
-        std::cout << "----Text Inputs----" << std::endl;
-        for(int i = 0; i < 4; i++)
-        {
-            std::cout << textInputs[i].getLabel() << ": " << textInputs[i].getText() << "\n" << std::endl;
-        }
-    }
+    // if (ImGui::Button("Print Inputs"))
+    // {
+    //     std::cout << "----Text Inputs----" << std::endl;
+    //     for(int i = 0; i < 4; i++)
+    //     {
+    //         std::cout << textInputs[i].getLabel() << ": " << textInputs[i].getText() << "\n" << std::endl;
+    //     }
+    // }
 
     // PLACE ALL WINDOW RENDERING CODE IN HERE
     ImGui::End();

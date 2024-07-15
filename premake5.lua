@@ -30,10 +30,10 @@ project "sdl2"
         "mkdir -p vendor/sdl2/build; cd vendor/sdl2/build; ../configure --prefix=\"$$(pwd)\"; make -j4; make install"
     }
 
-    filter "system:windows"
-        buildcommands {
-            "cp vendor/sdl2/build/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll"
-        }
+filter "system:windows"
+    buildcommands {
+        "cp vendor/sdl2/build/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll"
+    }
 
 filter ""
 

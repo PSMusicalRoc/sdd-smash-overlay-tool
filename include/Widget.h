@@ -13,6 +13,7 @@ protected:
 
 public:
     virtual void render() = 0;
+    virtual ~Widget() {}
 };
 
 #endif

@@ -58,3 +58,6 @@ includedirs {
 
 linkoptions "`vendor/sdl2/build/bin/sdl2-config --libs`"
 
+filter "configurations:Debug"
+    symbols "On"
+

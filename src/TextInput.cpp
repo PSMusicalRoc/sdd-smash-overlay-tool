@@ -20,8 +20,8 @@ void TextInput::render()
     
     ImGui::SetCursorPos(ImVec2(_x, _y));
     ImGui::SetNextItemWidth(_width);
-    const char* l = label.c_str();
-    if (ImGui::InputText(l, &(this->text)))
+    // const char* l = label.c_str();
+    if (ImGui::InputTextWithHint(("##" + label).c_str(), label.c_str(),  &(this->text)))
     {
         Update::get()->set(this->jsonLabel, this->text);
     }

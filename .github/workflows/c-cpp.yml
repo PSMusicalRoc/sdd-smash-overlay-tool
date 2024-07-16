@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  build-linux:
 
     runs-on: ubuntu-latest
 
@@ -15,7 +15,16 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: 'recursive'
-    - name: premake
+    - name: Generate Build Configuration (Premake)
       run: ./create-makefile-unix.sh
-    - name: make
+    - name: Build SDL2 and Tool (make)
       run: make config=release
+    - name: Zip files into artifact
+      run: |
+        mv build/Release/ez-stream-tool ./
+        zip build.zip ez-stream-tool overlay.html res
+    - name: Add artifact to Actions run
+      uses: actions/upload-artifact@v4
+      with:
+        name: build.zip
+        path: build.zip

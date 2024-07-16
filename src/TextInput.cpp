@@ -12,6 +12,8 @@ TextInput::TextInput(int x, int y, int width, const std::string& label, const st
     this->label = label;
     this->text = "";
     this->jsonLabel = jsonLabel;
+
+    Update::get()->set(jsonLabel, "default");
 }
 
 void TextInput::render()

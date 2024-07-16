@@ -19,7 +19,7 @@ jobs:
       with:
         submodules: 'recursive'
     - name: Generate Build Configuration (Premake)
-      run: ./create-makefile-windows.sh
+      run: ./create-makefile-windows.bat
     - name: Build SDL2 and Tool (make)
       run: make config=release
     - name: Zip files into artifact

@@ -16,7 +16,7 @@ private:
     std::string _output_file_path;
 
     // Default Constructor (for singleton)
-    Update(const std::string& output_file_path = "src/overlay-data.json");
+    Update(const std::string& output_file_path = "res/overlay-data.json");
 
 public:
     static Update* get();

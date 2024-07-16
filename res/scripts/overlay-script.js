@@ -62,8 +62,8 @@ function doUpdate(scInfo) {
     document.getElementById("p1Name").innerHTML = p1Name;
     document.getElementById("p2Name").innerHTML = p2Name;
 
-    document.getElementById("p1Score").innerHTML = p1Score;
-    document.getElementById("p2Score").innerHTML = p2Score;
+    // document.getElementById("p1Score").innerHTML = p1Score;
+    // document.getElementById("p2Score").innerHTML = p2Score;
 
 
 	// change all instances of player scoreboards' colors
@@ -80,17 +80,17 @@ function doUpdate(scInfo) {
 	}
 
 	
-	var p1Characters = document.getElementsByName("p1Character");
-	for (var i = 0; i < p1Characters.length; i++)
-	{
-		p1Characters[i].src = "res/characters/Stock Icons/" + p1Character + "/" + p1Character + " (1).png";
-	}
+	// var p1Characters = document.getElementsByName("p1Character");
+	// for (var i = 0; i < p1Characters.length; i++)
+	// {
+	// 	p1Characters[i].src = "res/characters/Stock Icons/" + p1Character + "/" + p1Character + " (1).png";
+	// }
 
-	var p2Characters = document.getElementsByName("p2Character");
-	for (var i = 0; i < p2Characters.length; i++)
-	{
-		p2Characters[i].src = "res/characters/Stock Icons/" + p2Character + "/" + p2Character + " (1).png";
-	}
+	// var p2Characters = document.getElementsByName("p2Character");
+	// for (var i = 0; i < p2Characters.length; i++)
+	// {
+	// 	p2Characters[i].src = "res/characters/Stock Icons/" + p2Character + "/" + p2Character + " (1).png";
+	// }
 
 	document.getElementById("tournament-name").innerHTML = tournName;
 	document.getElementById("round-name").innerHTML = round;

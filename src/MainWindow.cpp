@@ -10,10 +10,10 @@
 MainWindow::MainWindow()
 {
     _widgets = {
-        new TextInput(400, 100, 200, "Tournament", "tournName"),
-        new TextInput(400, 150, 200, "Bracket", "round"),
-        new TextInput(100, 300, 100, "Name 1", "p1Name"),
-        new TextInput(800, 300, 100, "Name 2", "p2Name")
+        new TextInput(225, 350, 450, "Tournament", "tournName"),
+        new TextInput(250, 390, 400, "Bracket", "round"),
+        new TextInput(50, 50, 400, "Name 1", "p1Name"),
+        new TextInput(550, 50, 400, "Name 2", "p2Name")
     };
 }
 

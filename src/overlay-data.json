@@ -1,12 +1,6 @@
 {
-    "p1Character": "Isabelle",
-    "p1Color": "red",
-    "p1Name": "Tester",
-    "p1Score": "0",
-    "p2Character": "Pac Man",
-    "p2Color": "blue",
-    "p2Name": "santapacman",
-    "p2Score": "0",
-    "round": "Winner's Round 1",
-    "tournName": "Summer Smash @ RPI #4"
+    "p1Name": "default",
+    "p2Name": "default",
+    "round": "default",
+    "tournName": "hell yeah"
 }

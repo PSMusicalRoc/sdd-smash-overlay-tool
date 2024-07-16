@@ -1,5 +1,6 @@
 #include "MainWindow.h"
 #include "TextInput.h"
+#include "UpdateButton.h"
 
 #include "imgui.h"
 #include "Update.h"
@@ -10,10 +11,11 @@
 MainWindow::MainWindow()
 {
     _widgets = {
-        new TextInput(400, 100, 200, "Tournament", "tournName"),
-        new TextInput(400, 150, 200, "Bracket", "round"),
-        new TextInput(100, 300, 100, "Name 1", "p1Name"),
-        new TextInput(800, 300, 100, "Name 2", "p2Name")
+        new TextInput(225, 350, 450, "Tournament Name", "tournName"),
+        new TextInput(250, 390, 400, "Bracket Position", "round"),
+        new TextInput(50, 50, 400, "Player 1 Name", "p1Name"),
+        new TextInput(550, 50, 400, "Player 2 Name", "p2Name"),
+        new UpdateButton(450, 450, 100, 40)
     };
 }
 
@@ -40,11 +42,11 @@ void MainWindow::render(SDL_Window* renderwindow)
     ImGui::Begin("MainWindow", (bool*)NULL, flags);
     // PLACE ALL WINDOW RENDERING CODE IN HERE
 
-    ImGui::SetCursorPos(ImVec2(40, 400));
-    if (ImGui::Button("TestButton"))
-    {
-        Update::get()->update();
-    }
+    // ImGui::SetCursorPos(ImVec2(40, 400));
+    // if (ImGui::Button("TestButton"))
+    // {
+    //     Update::get()->update();
+    // }
 
     //render text inputs
     for (Widget* w : _widgets)

@@ -15,7 +15,7 @@ function getInfo() {
 	return new Promise(function (resolve) {
 		const oReq = new XMLHttpRequest();
 		oReq.addEventListener("load", reqListener);
-		oReq.open("GET", 'overlay-data.json');
+		oReq.open("GET", 'res/overlay-data.json');
 		oReq.send();
 
 		//will trigger when file loads

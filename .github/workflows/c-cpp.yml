@@ -22,7 +22,7 @@ jobs:
     - name: Zip files into artifact
       run: |
         mv build/Release/ez-stream-tool ./
-        zip build.zip ez-stream-tool overlay.html res
+        zip -r build.zip ez-stream-tool overlay.html res
     - name: Add artifact to Actions run
       uses: actions/upload-artifact@v4
       with:

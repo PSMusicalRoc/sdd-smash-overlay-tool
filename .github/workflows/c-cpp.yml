@@ -1,5 +1,7 @@
 name: C/C++ CI
 
+# mv build/Release/SDL2.dll ./
+
 on:
   push:
     branches: [ "main" ]
@@ -18,14 +20,18 @@ jobs:
     - uses: actions/checkout@v4
       with:
         submodules: 'recursive'
+    - uses: libsdl-org/setup-sdl@main
+      with:
+        install-linux-dependencies: true
+        version: 2-latest
+        version-sdl-image: 2-latest
     - name: Generate Build Configuration (Premake)
       run: ./create-makefile-windows.bat
-    - name: Build SDL2 and Tool (make)
+    - name: Build Tool (make)
       run: make config=release
     - name: Zip files into artifact
       run: |
         mv build/Release/ez-stream-tool ./
-        mv build/Release/SDL2.dll ./
         zip -r build.zip ez-stream-tool.exe SDL2.dll overlay.html res
     - name: Add artifact to Actions run
       uses: actions/upload-artifact@v4

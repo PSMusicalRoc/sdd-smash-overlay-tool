@@ -27,6 +27,7 @@ jobs:
         install: >-
           mingw-w64-x86_64-toolchain
           mingw-w64-x86_64-SDL2
+          make
     - name: Test SDL installation
       run: |
         pkg-config sdl2 --cflags

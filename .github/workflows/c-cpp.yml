@@ -39,8 +39,8 @@ jobs:
     - name: Zip files into artifact
       run: |
         mv build/Release/ez-stream-tool ./
-        echo "${MINGW_PREFIX}/mingw64/bin/SDL2.dll"
-        cp "${MINGW_PREFIX}/mingw64/bin/SDL2.dll" ./
+        echo "${MINGW_PREFIX}/bin/SDL2.dll"
+        cp "${MINGW_PREFIX}/bin/SDL2.dll" ./
         zip -r build.zip ez-stream-tool.exe SDL2.dll overlay.html res
     - name: Add artifact to Actions run
       uses: actions/upload-artifact@v4

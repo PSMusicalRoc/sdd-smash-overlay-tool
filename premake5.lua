@@ -13,29 +13,28 @@ imgui_params = {
     }
 }
 
-sdl_params = {
-    lib_dir = "vendor/sdl2/build/lib",
-    include_dir = "vendor/sdl2/build/include/SDL2"
-}
+-- sdl_params = {
+--     lib_dir = "vendor/sdl2/build/lib",
+--     include_dir = "vendor/sdl2/build/include/SDL2"
+-- }
 
 
 workspace "ez-stream"
     configurations { "Debug", "Release" }
 
-project "sdl2"
-    kind "Makefile"
+-- project "sdl2"
+--     kind "Makefile"
 
-    buildcommands {
-        "mkdir -p vendor_install",
-        "mkdir -p vendor/sdl2/build; cd vendor/sdl2/build; ../configure --prefix=\"$$(pwd)\"; make -j4; make install"
-    }
+--     buildcommands {
+--         "mkdir -p vendor/sdl2/build; cd vendor/sdl2/build; ../configure --prefix=\"$$(pwd)\"; make -j4; make install"
+--     }
 
-    filter "system:windows"
-        buildcommands {
-            "cp vendor/sdl2/build/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll"
-        }
+--     filter "system:windows"
+--         buildcommands {
+--             "cp vendor/sdl2/build/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll"
+--         }
 
-filter ""
+-- filter ""
 
 project "ez-stream-tool"
     kind "WindowedApp"
@@ -43,7 +42,7 @@ project "ez-stream-tool"
     cppdialect "C++17"
     objdir "obj/%{cfg.buildcfg}/"
     targetdir "build/%{cfg.buildcfg}"
-    dependson "sdl2"
+    -- dependson "sdl2"
 
 files {
     "src/**.cpp",
@@ -53,10 +52,11 @@ files {
 includedirs {
     "include",
     imgui_params.includes,
-    sdl_params.include_dir
+    -- sdl_params.include_dir
 }
 
-linkoptions "`vendor/sdl2/build/bin/sdl2-config --libs`"
+buildoptions "`sdl2-config --cflags`"
+linkoptions "`sdl2-config --libs`"
 
 filter "configurations:Debug"
     symbols "On"

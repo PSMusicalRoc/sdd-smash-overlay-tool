@@ -55,8 +55,8 @@ includedirs {
     -- sdl_params.include_dir
 }
 
-buildoptions "`pkg-config sdl2 --cflags`"
-linkoptions "`pkg-config sdl2 --libs`"
+buildoptions "`sdl2-config --cflags`"
+linkoptions "`sdl2-config --libs`"
 
 filter "configurations:Debug"
     symbols "On"

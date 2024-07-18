@@ -27,8 +27,7 @@ jobs:
         version-sdl-image: 2-latest
     - name: Test SDL installation
       run: |
-        PATH="$PATH:${SDL2_CONFIG}"
-        sdl2-config --cflags
+        pkg-config sdl2 --cflags
     - name: Generate Build Configuration (Premake)
       run: ./create-makefile-windows.bat
     - name: Build Tool (make)

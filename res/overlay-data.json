@@ -1,6 +1,8 @@
 {
-    "p1Name": "lads",
-    "p2Name": "it",
-    "round": "i think",
-    "tournName": "works"
+    "p1Name": "default",
+    "p1Score": 2,
+    "p2Name": "default",
+    "p2Score": 4,
+    "round": "default",
+    "tournName": "default"
 }

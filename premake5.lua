@@ -61,3 +61,8 @@ linkoptions "`sdl2-config --libs`"
 filter "configurations:Debug"
     symbols "On"
 
+filter "system:windows"
+    postbuildcommands {
+        "cp $${MINGW_PREFIX}/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll"
+    }
+

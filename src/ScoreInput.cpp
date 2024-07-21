@@ -13,7 +13,7 @@ ScoreInput::ScoreInput(int x, int y, int width, const std::string& label, const 
     this->jsonLabel = jsonLabel;
     this->score = 0;
 
-    Update::get()->set(jsonLabel, "default");
+    Update::get()->set(jsonLabel, 0);
 }
 
 void ScoreInput::render()

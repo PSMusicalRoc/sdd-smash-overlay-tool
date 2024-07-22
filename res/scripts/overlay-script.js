@@ -62,8 +62,8 @@ function doUpdate(scInfo) {
     document.getElementById("p1Name").innerHTML = p1Name;
     document.getElementById("p2Name").innerHTML = p2Name;
 
-    // document.getElementById("p1Score").innerHTML = p1Score;
-    // document.getElementById("p2Score").innerHTML = p2Score;
+    document.getElementById("p1Score").innerHTML = p1Score;
+    document.getElementById("p2Score").innerHTML = p2Score;
 
 
 	// change all instances of player scoreboards' colors

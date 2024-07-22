@@ -69,4 +69,6 @@ void MainWindow::render(SDL_Window* renderwindow)
 
     // PLACE ALL WINDOW RENDERING CODE IN HERE
     ImGui::End();
+
+    
 }

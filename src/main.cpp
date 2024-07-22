@@ -3,6 +3,7 @@
 #include "imgui_impl_sdlrenderer2.h"
 
 #include <SDL.h>
+#include "loadImage.h"
 
 #include "MainWindow.h"
 #include "TextInput.h"
@@ -77,6 +78,9 @@ int main(int argc, char** argv)
     }
 
     // create window
+    LoadImage l;
+    l.grabImage("images/blobfish.png");
+
     SDL_Window* win;
     SDL_Renderer* ren;
     win = SDL_CreateWindow( "RPI EZ-Stream",

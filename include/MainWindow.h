@@ -6,6 +6,7 @@
 #include "Widget.h"
 
 #include "TextInput.h"
+#include "Character.h"
 
 class MainWindow
 {
@@ -15,6 +16,7 @@ private:
 public:
     MainWindow();
     ~MainWindow();
+    std::vector<Character> loadCharacters();
     void render(SDL_Window* renderwindow);
 };
 

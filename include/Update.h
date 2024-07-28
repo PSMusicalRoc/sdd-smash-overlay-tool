@@ -25,6 +25,9 @@ public:
     template <typename T>
     void set(const std::string& jsonKey, const T& data) { this->_data[jsonKey] = data; }
 
+    template <typename T>
+    const T getData(const std::string& jsonKey) { return this->_data[jsonKey]; }
+
     void update();
 };
 

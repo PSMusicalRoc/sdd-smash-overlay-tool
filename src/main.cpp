@@ -114,9 +114,6 @@ int main(int argc, char** argv)
         return -1;
     }
 
-    LoadImage l;
-    SDL_Texture* texture = l.grabImage("images/blobfish.png", ren);
-
 
     // Set up ImGui
 
@@ -170,7 +167,6 @@ int main(int argc, char** argv)
         ImGui::ShowDemoWindow(NULL);
 
         mw.render(win);
-        ImGui::Image((void*)texture, ImVec2(300, 100));
         //in1.render();
         //in2.render();
 

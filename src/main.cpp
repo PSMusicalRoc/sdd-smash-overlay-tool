@@ -78,11 +78,11 @@ int main(int argc, char** argv)
     }
 
     // create window
-    LoadImage l;
-    l.grabImage("images/blobfish.png");
 
     SDL_Window* win;
     SDL_Renderer* ren;
+
+    
     win = SDL_CreateWindow( "RPI EZ-Stream",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
         1000, 500, SDL_WINDOW_SHOWN
@@ -103,6 +103,9 @@ int main(int argc, char** argv)
         SDL_Quit();
         return -1;
     }
+
+    LoadImage l;
+    SDL_Texture* texture = l.grabImage("images/blobfish.png", ren);
 
 
     // Set up ImGui
@@ -151,6 +154,7 @@ int main(int argc, char** argv)
         ImGui::ShowDemoWindow(NULL);
 
         mw.render(win);
+        ImGui::Image((void*)texture, ImVec2(300, 100));
         //in1.render();
         //in2.render();
 

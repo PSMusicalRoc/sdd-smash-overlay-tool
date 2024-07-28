@@ -5,8 +5,14 @@
 
 class LoadImage {
 
+    private: 
+        static LoadImage* _reference;
+
     public: 
-        void grabImage(const char* imagePath);
+        static LoadImage* get();
+        static void destroy();
+
+        SDL_Texture* grabImage(const char* imagePath, SDL_Renderer* mainRender);
 
 
 };

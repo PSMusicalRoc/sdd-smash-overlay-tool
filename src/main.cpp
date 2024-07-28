@@ -12,6 +12,7 @@
 #include "Character.h"
 #include "CharacterButton.h"
 
+
 #include <iostream>
 
 void StyleColorsEZStream()
@@ -90,7 +91,6 @@ int main(int argc, char** argv)
     }
 
     // create window
-
     SDL_Window* win;
     SDL_Renderer* ren;
 
@@ -99,13 +99,14 @@ int main(int argc, char** argv)
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
         1000, 500, SDL_WINDOW_SHOWN
     );
+  
     if ( win == NULL )
     {
         std::cerr << "SDL Create Window Error: " << SDL_GetError() << std::endl;
         SDL_Quit();
         return -1;
     }
-
+ 
     // create renderer
     ren = SDL_CreateRenderer( win, -1, SDL_RENDERER_PRESENTVSYNC | SDL_RENDERER_ACCELERATED );
     if ( ren == NULL )
@@ -132,6 +133,8 @@ int main(int argc, char** argv)
     ImGui_ImplSDLRenderer2_Init( ren );
 
     MainWindow mw;
+
+    //PlayerSelectScreen ps;
     //TextInput in1("Test 1"), in2("Test 2");
 
     SDL_Event ev;
@@ -163,6 +166,8 @@ int main(int argc, char** argv)
         ImGui::ShowDemoWindow(NULL);
 #endif
         mw.render(win);
+
+        //ps.render(win);
         //in1.render();
         //in2.render();
 

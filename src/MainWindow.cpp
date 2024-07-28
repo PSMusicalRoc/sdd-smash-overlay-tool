@@ -5,6 +5,7 @@
 
 #include "imgui.h"
 #include "Update.h"
+#include "ImageContainer.h"
 #include <iostream>
 #include <fstream>
 
@@ -69,4 +70,6 @@ void MainWindow::render(SDL_Window* renderwindow)
 
     // PLACE ALL WINDOW RENDERING CODE IN HERE
     ImGui::End();
+
+    
 }

@@ -27,6 +27,7 @@ jobs:
         install: >-
           mingw-w64-x86_64-toolchain
           mingw-w64-x86_64-SDL2
+          mingw-w64-x86_64-SDL2_image
           make
           zip
     - name: Test SDL installation
@@ -61,7 +62,7 @@ jobs:
         submodules: 'recursive'
     - name: Install Dependencies
       run: |
-        sudo apt-get install build-essential libsdl2-dev
+        sudo apt-get install build-essential libsdl2-dev libsdl2-image-dev
     - name: Test SDL installation
       run: |
         sdl2-config --cflags

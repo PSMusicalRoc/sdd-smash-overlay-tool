@@ -21,9 +21,9 @@ CharacterButton::CharacterButton(int x, int y, int width, const std::string& lab
     //if p1Char == null, set to default
     //if p1Char exists, set to what it is
     if(Update::get()->checkjson(jsonLabel)){
-        Update::get()->set(jsonLabel, ); 
+        Update::get()->set(jsonLabel, "default"); 
     }
-    std::string val = Update::get()->viewjson<std::string>(jsonLabel);
+    std::string val = Update::get()->getData<std::string>(jsonLabel);
 }
 
 void CharacterButton::render()

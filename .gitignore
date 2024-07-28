@@ -6,3 +6,8 @@ Makefile
 
 # vscode files
 .vscode/
+
+# temp changes
+# res/characters/
+desktop.ini
+html/rpilogo.png

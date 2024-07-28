@@ -7,6 +7,7 @@
 
 #include "imgui.h"
 #include "Update.h"
+#include "ImageContainer.h"
 #include <iostream>
 #include <fstream>
 

@@ -9,6 +9,8 @@
 
 #include "MainWindow.h"
 #include "TextInput.h"
+#include "Character.h"
+#include "CharacterButton.h"
 
 #include <iostream>
 

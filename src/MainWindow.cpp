@@ -2,6 +2,7 @@
 #include "TextInput.h"
 #include "ScoreInput.h"
 #include "UpdateButton.h"
+#include "CharacterButton.h"
 
 #include "imgui.h"
 #include "Update.h"

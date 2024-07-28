@@ -28,7 +28,7 @@ public:
     template <typename T>
     const T getData(const std::string& jsonKey) { return this->_data[jsonKey]; }
 
-    bool checkjson(const std::string& jsonKey) { return _data.contains(jsonKey); }
+    bool hasKey(const std::string& jsonKey) { return _data.contains(jsonKey); }
 
     void update();
 };

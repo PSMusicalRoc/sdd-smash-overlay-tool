@@ -3,6 +3,9 @@
 #include "imgui_impl_sdlrenderer2.h"
 
 #include <SDL.h>
+#include <SDL_image.h>
+#include "ImageContainer.h"
+#include "Update.h"
 
 #include "MainWindow.h"
 #include "TextInput.h"
@@ -76,9 +79,20 @@ int main(int argc, char** argv)
         return -1;
     }
 
+    // init SDL_image for image loading
+    if ( IMG_Init(IMG_INIT_PNG) != IMG_INIT_PNG )
+    {
+        std::cerr << "SDL_image Init Error: " << IMG_GetError() << std::endl;
+        SDL_Quit();
+        return -1;
+    }
+
     // create window
+
     SDL_Window* win;
     SDL_Renderer* ren;
+
+    
     win = SDL_CreateWindow( "RPI EZ-Stream",
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
         1000, 500, SDL_WINDOW_SHOWN
@@ -100,6 +114,9 @@ int main(int argc, char** argv)
         return -1;
     }
 
+    LoadImage l;
+    SDL_Texture* texture = l.grabImage("images/blobfish.png", ren);
+
 
     // Set up ImGui
 
@@ -114,6 +131,12 @@ int main(int argc, char** argv)
 
     ImGui_ImplSDL2_InitForSDLRenderer( win, ren );
     ImGui_ImplSDLRenderer2_Init( ren );
+
+    ImageContainer* im = ImageContainer::get();
+    im->setRenderer(ren);
+    im->loadImage("blobfish", "images/blobfish.png");
+    im->loadImage("mario", "images/mario.png");
+    im->loadImage("pika", "images/pikachu.png");
 
     MainWindow mw;
     //TextInput in1("Test 1"), in2("Test 2");
@@ -147,6 +170,7 @@ int main(int argc, char** argv)
         ImGui::ShowDemoWindow(NULL);
 
         mw.render(win);
+        ImGui::Image((void*)texture, ImVec2(300, 100));
         //in1.render();
         //in2.render();
 
@@ -163,6 +187,10 @@ int main(int argc, char** argv)
         ImGui_ImplSDLRenderer2_RenderDrawData( ImGui::GetDrawData(), ren );
         SDL_RenderPresent( ren );
     }
+
+    // uninitialize image cache
+    ImageContainer::destroy();
+    Update::destroy();
 
     // deinit imgui
     ImGui_ImplSDLRenderer2_Shutdown();

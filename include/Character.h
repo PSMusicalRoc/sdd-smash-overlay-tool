@@ -11,6 +11,10 @@ private:
    std::string filePath;
 
 public:
+    Character(){ 
+        name = "";
+        aliases = {};
+    }
     Character(std::string name, std::vector<std::string> aliases);
     bool checkName(std::string name);
     std::string getFilePath() { return this->filePath; }

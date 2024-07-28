@@ -25,6 +25,11 @@ public:
     template <typename T>
     void set(const std::string& jsonKey, const T& data) { this->_data[jsonKey] = data; }
 
+    template <typename T>
+    T viewjson(const std::string& jsonKey) { return _data[jsonKey]; }
+
+    bool checkjson(const std::string& jsonKey) { return _data.contains(jsonKey); }
+
     void update();
 };
 

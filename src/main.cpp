@@ -157,9 +157,9 @@ int main(int argc, char** argv)
 
 
         // Do all graphics calls in between here...
-
+#ifndef EZSTREAM_RELEASE
         ImGui::ShowDemoWindow(NULL);
-
+#endif
         mw.render(win);
         //in1.render();
         //in2.render();

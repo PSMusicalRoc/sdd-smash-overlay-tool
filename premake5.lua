@@ -61,6 +61,9 @@ linkoptions  { "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
 filter "configurations:Debug"
     symbols "On"
 
+filter "configurations:Release"
+    defines { "EZSTREAM_RELEASE" }
+
 filter "system:windows"
     postbuildcommands {
         "cp $${MINGW_PREFIX}/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll"

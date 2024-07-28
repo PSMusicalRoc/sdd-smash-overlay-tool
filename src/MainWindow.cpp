@@ -5,6 +5,7 @@
 
 #include "imgui.h"
 #include "Update.h"
+#include "ImageContainer.h"
 #include <iostream>
 #include <fstream>
 
@@ -56,6 +57,21 @@ void MainWindow::render(SDL_Window* renderwindow)
     {
         w->render();
     }
+
+    ImGui::SetCursorPos(ImVec2(100, 100));
+
+    ImGui::Image(
+        ImageContainer::get()->getImage("blobfish"),
+        ImVec2(100, 100)
+    ); ImGui::SameLine();
+    ImGui::Image(
+        ImageContainer::get()->getImage("mario"),
+        ImVec2(100, 100)
+    ); ImGui::SameLine();
+    ImGui::Image(   
+        ImageContainer::get()->getImage("pika"),
+        ImVec2(100, 100)
+    ); ImGui::SameLine();
 
     //testing text inputs
     // if (ImGui::Button("Print Inputs"))

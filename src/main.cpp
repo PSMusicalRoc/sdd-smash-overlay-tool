@@ -12,10 +12,6 @@
 
 
 #include <iostream>
-SDL_Window* win = SDL_CreateWindow( "RPI EZ-Stream",
-        SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-        1000, 500, SDL_WINDOW_SHOWN
-    );
 
 void StyleColorsEZStream()
 {

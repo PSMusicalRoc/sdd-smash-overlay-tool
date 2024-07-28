@@ -1,8 +1,8 @@
 {
     "p1Name": "default",
-    "p1Score": "default",
+    "p1Score": 0,
     "p2Name": "default",
-    "p2Score": "default",
+    "p2Score": 0,
     "round": "default",
     "tournName": "default"
 }

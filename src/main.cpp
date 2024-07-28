@@ -129,12 +129,6 @@ int main(int argc, char** argv)
     ImGui_ImplSDL2_InitForSDLRenderer( win, ren );
     ImGui_ImplSDLRenderer2_Init( ren );
 
-    ImageContainer* im = ImageContainer::get();
-    im->setRenderer(ren);
-    im->loadImage("blobfish", "images/blobfish.png");
-    im->loadImage("mario", "images/mario.png");
-    im->loadImage("pika", "images/pikachu.png");
-
     MainWindow mw;
     //TextInput in1("Test 1"), in2("Test 2");
 

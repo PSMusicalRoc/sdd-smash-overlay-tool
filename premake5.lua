@@ -55,11 +55,14 @@ includedirs {
     -- sdl_params.include_dir
 }
 
-buildoptions "`sdl2-config --cflags`"
-linkoptions "`sdl2-config --libs`"
+buildoptions { "`sdl2-config --cflags`", "`pkg-config SDL2_image --cflags`" }
+linkoptions  { "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
 
 filter "configurations:Debug"
     symbols "On"
+
+filter "configurations:Release"
+    defines { "EZSTREAM_RELEASE" }
 
 filter "system:windows"
     postbuildcommands {

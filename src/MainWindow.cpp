@@ -3,11 +3,18 @@
 #include "ScoreInput.h"
 #include "UpdateButton.h"
 
+#include "PlayerCharacterSelect.h"
+
 #include "imgui.h"
 #include "Update.h"
+#include "ImageContainer.h"
 #include <iostream>
 #include <fstream>
 
+#include "WindowState.h"
+
+
+WindowMode MainWindow::currMode = MAINWINDOW;
 
 MainWindow::MainWindow()
 {
@@ -18,13 +25,26 @@ MainWindow::MainWindow()
         new TextInput(550, 50, 400, "Player 2 Name", "p2Name"),
         new ScoreInput(420, 125, 30, "Player 1 Score", "p1Score"),
         new ScoreInput(550, 125, 30, "Player 2 Score", "p2Score"),
-        new UpdateButton(450, 450, 100, 40)
+        new UpdateButton(450, 450, 100, 40),
+        new PlayerCharacterSelect(225,100,100, "Player 1 Character", "p1char")
+        
     };
+
+    _widgets2 = {
+        new TextInput(225, 350, 550, "PLACEHOLDER", "tournName")
+        
+    };
+
+
 }
 
 MainWindow::~MainWindow()
 {
     for (Widget* w : _widgets)
+    {
+        delete w;
+    }
+    for (Widget* w : _widgets2)
     {
         delete w;
     }
@@ -52,11 +72,34 @@ void MainWindow::render(SDL_Window* renderwindow)
     // }
 
     //render text inputs
-    for (Widget* w : _widgets)
-    {
-        w->render();
-    }
+    
 
+    if(WindowState::get() -> getState() == 0){
+        for (Widget* w : _widgets)
+        {
+            w->render();
+        }
+
+        
+        
+        ImGui::SetCursorPos(ImVec2(225, 100));
+        ImGui::SetNextItemWidth(100);
+
+        /*
+        if (ImGui::Button("Change!", ImVec2(100, 0)))
+            {
+                //Update::get()->set("SelectScreenOpen", "true");
+                
+                WindowState::get() -> WindowState::set(1);
+            }
+            */
+    }
+    else {
+        for (Widget* w : _widgets2)
+        {
+            w->render();
+        }
+    }
     //testing text inputs
     // if (ImGui::Button("Print Inputs"))
     // {
@@ -70,3 +113,4 @@ void MainWindow::render(SDL_Window* renderwindow)
     // PLACE ALL WINDOW RENDERING CODE IN HERE
     ImGui::End();
 }
+

@@ -60,6 +60,7 @@ SDL_Texture* ImageContainer::loadImage(const std::string& key, const std::string
         std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
         return nullptr;
     }
+    SDL_SetTextureScaleMode(texture, SDL_ScaleModeBest);
 
     _textures.emplace(key, texture);
     return texture;

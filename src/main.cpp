@@ -165,6 +165,8 @@ int main(int argc, char** argv)
 #ifndef EZSTREAM_RELEASE
         ImGui::ShowDemoWindow(NULL);
 #endif
+        ImageContainer::get()->setRenderer(ren);
+        ImageContainer::get()->loadImage("Mario CSS", "res/characters/Mario/css.png");
         mw.render(win);
 
         //ps.render(win);

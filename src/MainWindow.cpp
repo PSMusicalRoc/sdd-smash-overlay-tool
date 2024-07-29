@@ -11,6 +11,7 @@
 #include "ImageContainer.h"
 #include <iostream>
 #include <fstream>
+#include <string>
 
 #include "WindowState.h"
 
@@ -31,10 +32,35 @@ MainWindow::MainWindow()
         
     };
 
-    _widgets2 = {
-        new TextInput(225, 350, 550, "PLACEHOLDER", "tournName")
-        
-    };
+    //std::vector<Character> charList = loadCharacters(); 
+    //is this slow? should we preload and save somewhere otherwise we have to load all characters each
+    //time playercharselect is pressed... idk need to test later
+    std::vector<Character> charList;
+    for(int i=0; i<87; i++){
+        charList.push_back(Character("Mario", {}));
+    }
+
+    //CharacterButton arrangement settings
+    int row_max = 13; //buttons per row
+    int button_x_len = 70; //look in CharacterButton.cpp -> render() -> size(x, y) for perfect fit
+    int button_y_len = 50;
+    int button_x_pos_init = 10; //starting x position
+    int button_y_pos_init = 100; // starting y position
+
+    int counter = 0;
+    int x = button_x_pos_init;
+    int y = button_y_pos_init;
+    for(int i=0; i<charList.size(); i++){
+        _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", charList[i]));
+        x+=button_x_len+5;
+        counter++;
+
+        if(counter==row_max){
+            counter = 0;
+            x = button_x_pos_init;
+            y+=button_y_len+5;
+        }
+    }
 
 
 }

@@ -8,6 +8,7 @@
 #include "imgui.h"
 #include "Update.h"
 #include "ImageContainer.h"
+#include "BackButton.h"
 #include <iostream>
 #include <fstream>
 
@@ -31,6 +32,7 @@ MainWindow::MainWindow()
     };
 
     _widgets2 = {
+        new BackButton(50, 50, 100, 40),
         new TextInput(225, 350, 550, "PLACEHOLDER", "tournName")
         
     };

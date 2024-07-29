@@ -41,7 +41,7 @@ void CharacterButton::render()
 
     //ImTextureID my_tex_id = ImageContainer::get()->getImage(key); 
 
-    ImTextureID my_tex_id = ImageContainer::get()->getImage("Mario CSS");
+    ImTextureID my_tex_id = ImageContainer::get()->getImage(character.getName() + "_css");
     ImVec2 size = ImVec2(70.0f, 50.0f);
     if(ImGui::ImageButton(("##" + label).c_str(), my_tex_id, size)){
         Update::get()->set(this->jsonLabel, this->getName());

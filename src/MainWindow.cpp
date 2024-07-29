@@ -12,6 +12,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include "Character.h"
+#include <nlohmann/json.hpp>
 
 #include "WindowState.h"
 
@@ -35,10 +37,7 @@ MainWindow::MainWindow()
     //std::vector<Character> charList = loadCharacters(); 
     //is this slow? should we preload and save somewhere otherwise we have to load all characters each
     //time playercharselect is pressed... idk need to test later
-    std::vector<Character> charList;
-    for(int i=0; i<87; i++){
-        charList.push_back(Character("Mario", {}));
-    }
+    std::vector<Character> charList =  loadCharacters();
 
     //CharacterButton arrangement settings
     int row_max = 13; //buttons per row
@@ -51,6 +50,8 @@ MainWindow::MainWindow()
     int x = button_x_pos_init;
     int y = button_y_pos_init;
     for(int i=0; i<charList.size(); i++){
+        // load css image
+        ImageContainer::get()->loadImage(charList[i].getName() + "_css", "res/characters/" + charList[i].getName() + "/css.png");
         _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", charList[i]));
         x+=button_x_len+5;
         counter++;
@@ -61,9 +62,10 @@ MainWindow::MainWindow()
             y+=button_y_len+5;
         }
     }
-
-
 }
+
+
+
 
 MainWindow::~MainWindow()
 {
@@ -76,6 +78,31 @@ MainWindow::~MainWindow()
         delete w;
     }
 }
+
+
+std::vector<Character> MainWindow::loadCharacters()
+{
+    std::vector<Character> chars = std::vector<Character>();
+
+    //loop through all characters in "res/characters"
+    std::string path = "res/characters";
+    for (const std::filesystem::directory_entry & entry : std::filesystem::directory_iterator(path))
+    {
+        //get the character file name 
+        std::string name = entry.path().stem().string();
+        //std::cout << name << std::endl; //print for testing
+        
+        //get info from json
+        std::ifstream f("res/characters/" + name + "/info.json");
+        nlohmann::json info = nlohmann::json::parse(f);
+        std::vector<std::string> aliases(info["aliases"]);
+
+        //add character to vector
+        chars.push_back(Character(name, aliases));
+    }
+    return chars;
+}
+
 
 void MainWindow::render(SDL_Window* renderwindow)
 {

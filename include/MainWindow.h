@@ -6,6 +6,7 @@
 #include "Widget.h"
 
 #include "TextInput.h"
+#include "Character.h"
 
 enum WindowMode {
     MAINWINDOW,
@@ -25,6 +26,7 @@ private:
 public:
     MainWindow();
     ~MainWindow();
+    std::vector<Character> loadCharacters();
     void render(SDL_Window* renderwindow);
 };
 

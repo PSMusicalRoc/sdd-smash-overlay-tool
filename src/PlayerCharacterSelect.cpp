@@ -11,12 +11,12 @@
 #include "WindowState.h"
 
 
-PlayerCharacterSelect::PlayerCharacterSelect(int x, int y, int width, const std::string& label, const std::string& jsonLabel)
+PlayerCharacterSelect::PlayerCharacterSelect(int x, int y, int width, const std::string& label, const std::string& json_label)
     :Widget(x, y, width, 0)
 {
-    this->label = label;
-    this->jsonLabel = jsonLabel;
-    this->name = "default";
+    this->_label = label;
+    this->_json_label = json_label;
+    this->_name = "default";
 
     //SDL_Window* selectWindow = SDL_CreateWindow( "Player Select Screen",
       //  SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
@@ -24,7 +24,7 @@ PlayerCharacterSelect::PlayerCharacterSelect(int x, int y, int width, const std:
     //);
      bool r = false;
 
-    Update::get()->set(jsonLabel, "default");
+    Update::get()->set(json_label, "default");
 }
 
 void PlayerCharacterSelect::render()
@@ -49,9 +49,9 @@ void PlayerCharacterSelect::render()
 
 std::string PlayerCharacterSelect::getLabel()
 {
-    return label;
+    return _label;
 }
 std::string PlayerCharacterSelect::getName()
 {
-    return name;
+    return _name;
 }

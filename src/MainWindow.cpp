@@ -20,7 +20,7 @@
 #include "WindowState.h"
 
 
-WindowMode MainWindow::currMode = MAINWINDOW;
+WindowMode MainWindow::_curr_mode = MAINWINDOW;
 
 MainWindow::MainWindow()
 {
@@ -45,7 +45,7 @@ MainWindow::MainWindow()
     //std::vector<Character> charList = loadCharacters(); 
     //is this slow? should we preload and save somewhere otherwise we have to load all characters each
     //time playercharselect is pressed... idk need to test later
-    std::vector<Character> charList =  loadCharacters();
+    std::vector<Character> char_list =  loadCharacters();
 
     //CharacterButton arrangement settings
     int row_max = 13; //buttons per row
@@ -57,17 +57,17 @@ MainWindow::MainWindow()
     int counter = 0;
     int x = button_x_pos_init;
     int y = button_y_pos_init;
-    for(int i=0; i<charList.size(); i++){
+    for(int i = 0; i < char_list.size(); i++){
         // load css image
-        ImageContainer::get()->loadImage(charList[i].getName() + "_css", "res/characters/" + charList[i].getName() + "/css.png");
-        _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", charList[i]));
-        x+=button_x_len+5;
+        ImageContainer::get()->loadImage(char_list[i].getName() + "_css", "res/characters/" + char_list[i].getName() + "/css.png");
+        _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", char_list[i]));
+        x += button_x_len + 5;
         counter++;
 
         if(counter==row_max){
             counter = 0;
             x = button_x_pos_init;
-            y+=button_y_len+5;
+            y += button_y_len + 5;
         }
     }
 }
@@ -112,7 +112,7 @@ std::vector<Character> MainWindow::loadCharacters()
 }
 
 
-void MainWindow::render(SDL_Window* renderwindow)
+void MainWindow::render(SDL_Window* render_window)
 {
     int flags = ImGuiWindowFlags_NoBringToFrontOnFocus |
                 ImGuiWindowFlags_NoCollapse |
@@ -120,9 +120,9 @@ void MainWindow::render(SDL_Window* renderwindow)
                 ImGuiWindowFlags_NoResize |
                 ImGuiWindowFlags_NoTitleBar;
     ImGui::SetNextWindowPos(ImVec2(0, 0));
-    int windowWidth, windowHeight;
-    SDL_GetWindowSize(renderwindow, &windowWidth, &windowHeight);
-    ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
+    int window_width, window_height;
+    SDL_GetWindowSize(render_window, &window_width, &window_height);
+    ImGui::SetNextWindowSize(ImVec2(window_width, window_height));
 
     ImGui::Begin("MainWindow", (bool*)NULL, flags);
     // PLACE ALL WINDOW RENDERING CODE IN HERE

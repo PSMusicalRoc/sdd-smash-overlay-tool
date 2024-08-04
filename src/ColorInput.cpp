@@ -25,7 +25,7 @@ void ColorInput::render()
     ImGui::SetCursorPos(ImVec2(_x, _y));
     ImGui::SetNextItemWidth(_width);
 
-    ImGuiColorEditFlags color_flags = 0 | 0 | 0 | 0 | ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_NoSmallPreview | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoDragDrop;
+    ImGuiColorEditFlags color_flags = ImGuiColorEditFlags_NoSidePreview | ImGuiColorEditFlags_NoSmallPreview | ImGuiColorEditFlags_NoInputs | ImGuiColorEditFlags_NoDragDrop;
     bool popup_open = ImGui::ColorButton((label + " Button").c_str(), color, color_flags); 
     if (popup_open)
     {
@@ -35,7 +35,7 @@ void ColorInput::render()
     if (ImGui::BeginPopup(("colorPicker" + label).c_str()))
     {
         ImGui::Text(label.c_str());
-        ImGui::ColorPicker4(("picker" + label).c_str(), (float*)&color, color_flags);
+        ImGui::ColorPicker4(("##" + label).c_str(), (float*)&color, color_flags);
 
         ImGui::BeginGroup(); 
         ImGui::Text("Palette");

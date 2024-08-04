@@ -1,9 +1,10 @@
 {
-    "p1Name": "default",
+    "p1Character": "Mario",
+    "p1Name": "",
     "p1Score": 0,
     "p1char": "default",
-    "p2Name": "default",
+    "p2Name": "",
     "p2Score": 0,
-    "round": "default",
-    "tournName": "default"
+    "round": "",
+    "tournName": ""
 }

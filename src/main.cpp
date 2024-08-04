@@ -9,6 +9,8 @@
 
 #include "MainWindow.h"
 #include "TextInput.h"
+#include "Character.h"
+#include "CharacterButton.h"
 
 
 #include <iostream>
@@ -130,6 +132,7 @@ int main(int argc, char** argv)
     ImGui_ImplSDL2_InitForSDLRenderer( win, ren );
     ImGui_ImplSDLRenderer2_Init( ren );
 
+    ImageContainer::get()->setRenderer(ren);
     MainWindow mw;
 
     //PlayerSelectScreen ps;
@@ -163,6 +166,7 @@ int main(int argc, char** argv)
 #ifndef EZSTREAM_RELEASE
         ImGui::ShowDemoWindow(NULL);
 #endif
+        // ImageContainer::get()->loadImage("Mario CSS", "res/characters/Mario/css.png");
         mw.render(win);
 
         //ps.render(win);

@@ -12,8 +12,10 @@ private:
     std::string label;
     std::string jsonLabel;
     std::string hex;
+    ImVec4 saved_palette[4];
 
     std::string getHexCode(float r, float g, float b, float a);
+    void createPallet();
 
 public:
     ColorInput(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "", float r = 255.0f, float g = 0.0f, float b = 0.0f);

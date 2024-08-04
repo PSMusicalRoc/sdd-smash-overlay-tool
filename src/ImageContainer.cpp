@@ -46,20 +46,21 @@ SDL_Texture* ImageContainer::loadImage(const std::string& key, const std::string
     }
 
     // Load the image
-    SDL_Surface* surface = IMG_Load(filename.c_str());
-    if (!surface) {
-        std::cerr << "Failed to load image: " << IMG_GetError() << std::endl;
-        return nullptr;
-    }
+    // SDL_Surface* surface = IMG_Load(filename.c_str());
+    // if (!surface) {
+    //     std::cerr << "Failed to load image: " << IMG_GetError() << std::endl;
+    //     return nullptr;
+    // }
 
     // Create a texture from the surface
-    SDL_Texture* texture = SDL_CreateTextureFromSurface(_ren_ptr, surface);
-    SDL_FreeSurface(surface);  // We no longer need the surface
+    SDL_Texture* texture = IMG_LoadTexture(_ren_ptr, filename.c_str());
+    // SDL_FreeSurface(surface);  // We no longer need the surface
 
     if (!texture) {
         std::cerr << "Failed to create texture: " << SDL_GetError() << std::endl;
         return nullptr;
     }
+    SDL_SetTextureScaleMode(texture, SDL_ScaleModeBest);
 
     _textures.emplace(key, texture);
     return texture;

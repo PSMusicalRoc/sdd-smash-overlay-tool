@@ -25,7 +25,7 @@ CharacterButton::CharacterButton(int x, int y, int width, const std::string& lab
         
     }
     else{
-        Update::get()->set(jsonLabel, "default"); 
+        Update::get()->set(jsonLabel, "Random"); 
         //tbh playercharacterselect should set p1/p2 character to default since it needs to display
         //the characters before characterbuttons are rendered in anyway
         //if thats the case then characterbutton doesn't have to change json unless its pressed

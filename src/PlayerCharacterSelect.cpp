@@ -23,8 +23,6 @@ PlayerCharacterSelect::PlayerCharacterSelect(int x, int y, int width, const std:
         //1000, 500, SDL_WINDOW_SHOWN
     //);
      bool r = false;
-
-    Update::get()->set(jsonLabel, "default");
 }
 
 void PlayerCharacterSelect::render()

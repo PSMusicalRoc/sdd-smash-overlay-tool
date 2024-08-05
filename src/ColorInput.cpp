@@ -60,28 +60,51 @@ void ColorInput::render()
 
 void ColorInput::createPallet()
 {
+    for(int i = 0; i < 10; i++)
+    {
+        //set alphas
+        _saved_palette[i].w = 1.0f;
+    }
     //red
-    _saved_palette[0].x = 1.0f;
-    _saved_palette[0].y = 0.0f;
-    _saved_palette[0].z = 0.0f;
-    _saved_palette[0].w = 1.0f;
+    _saved_palette[0].x = 1.0f; //r
+    _saved_palette[0].y = 0.2f; //g
+    _saved_palette[0].z = 0.2f; //b
     //blue
-    _saved_palette[1].x = 0.0f;
-    _saved_palette[1].y = 0.0f;
-    _saved_palette[1].z = 1.0f;
-    _saved_palette[1].w = 1.0f;
-
-    //I dont know what the other colors are
-    //green
-    _saved_palette[2].x = 0.0f;
-    _saved_palette[2].y = 1.0f;
-    _saved_palette[2].z = 0.0f;
-    _saved_palette[2].w = 1.0f;
+    _saved_palette[1].x = 0.16f;
+    _saved_palette[1].y = 0.52f;
+    _saved_palette[1].z = 0.96f;
     //yellow
-    _saved_palette[3].x = 1.0f;
-    _saved_palette[3].y = 1.0f;
-    _saved_palette[3].z = 0.0f;
-    _saved_palette[3].w = 1.0f;
+    _saved_palette[2].x = 1.0f;
+    _saved_palette[2].y = 0.74f;
+    _saved_palette[2].z = 0.05f;
+    //green
+    _saved_palette[3].x = 0.13f;
+    _saved_palette[3].y = 0.71f;
+    _saved_palette[3].z = 0.27f;
+    //orange
+    _saved_palette[4].x = 0.97f;
+    _saved_palette[4].y = 0.53f;
+    _saved_palette[4].z = 0.2f;
+    //cyan
+    _saved_palette[5].x = 0.15f;
+    _saved_palette[5].y = 0.79f;
+    _saved_palette[5].z = 0.89f;
+    //pink
+    _saved_palette[6].x = 1.0f;
+    _saved_palette[6].y = 0.61f;
+    _saved_palette[6].z = 0.71f;
+    //purple
+    _saved_palette[7].x = 0.58f;
+    _saved_palette[7].y = 0.44f;
+    _saved_palette[7].z = 1.0f;
+    //gray
+    _saved_palette[8].x = 0.67f;
+    _saved_palette[8].y = 0.67f;
+    _saved_palette[8].z = 0.67f;
+    //teal
+    _saved_palette[9].x = 0.53f;
+    _saved_palette[9].y = 1.0f;
+    _saved_palette[9].z = 0.80f;
 }
 
 ImVec4 ColorInput::getColor()

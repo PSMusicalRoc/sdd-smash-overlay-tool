@@ -4,6 +4,7 @@
 #include "UpdateButton.h"
 #include "CharacterButton.h"
 #include "ColorInput.h"
+#include "CostumeSelect.h"
 
 #include "PlayerCharacterSelect.h"
 
@@ -59,7 +60,7 @@ MainWindow::MainWindow()
     int y = button_y_pos_init;
     for(int i=0; i<charList.size(); i++){
         // load css image
-        ImageContainer::get()->loadImage(charList[i].getName() + "_css", "res/characters/" + charList[i].getName() + "/css.png");
+        ImageContainer::get()->loadImage(ImageContainer::makeCSSImgKey(charList[i].getName()), "res/characters/" + charList[i].getName() + "/css.png");
         _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", charList[i]));
         x+=button_x_len+5;
         counter++;

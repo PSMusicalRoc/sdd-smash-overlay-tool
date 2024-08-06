@@ -11,9 +11,10 @@
 #include "WindowState.h"
 
 
-PlayerCharacterSelect::PlayerCharacterSelect(int x, int y, int width, const std::string& label, const std::string& jsonLabel)
+PlayerCharacterSelect::PlayerCharacterSelect(bool player1, int x, int y, int width, const std::string& label, const std::string& jsonLabel)
     :Widget(x, y, width, 0)
 {
+    this->player1 = player1;
     this->label = label;
     this->jsonLabel = jsonLabel;
     this->name = "default";
@@ -34,14 +35,19 @@ void PlayerCharacterSelect::render()
     ImGui::SetNextItemWidth(_width);
     
    
-    
+    if(player1) {
+        if (ImGui::Button("P1Select", ImVec2(_width, _height)))
+        {
+            //Update::get()->set("SelectScreenOpen", "true");
+            WindowState::get() -> WindowState::set(1);
+        }
+    } else {
+        if (ImGui::Button("P2Select", ImVec2(_width, _height)))
+        {
+            //Update::get()->set("SelectScreenOpen", "true");
+            WindowState::get() -> WindowState::set(2);
 
-    if (ImGui::Button("Change!", ImVec2(_width, _height)))
-    {
-        //Update::get()->set("SelectScreenOpen", "true");
-        WindowState::get() -> WindowState::set(1);
-
-        
+        }
     }
 
     

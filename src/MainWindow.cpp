@@ -32,7 +32,8 @@ MainWindow::MainWindow()
         new ScoreInput(420, 125, 30, "Player 1 Score", "p1Score"),
         new ScoreInput(550, 125, 30, "Player 2 Score", "p2Score"),
         new UpdateButton(450, 450, 100, 40),
-        new PlayerCharacterSelect(225,100,100, "Player 1 Character", "p1char"),
+        new PlayerCharacterSelect(true, 225,100,100, "Player 1 Character", "p1char"),
+        new PlayerCharacterSelect(false, 675,100,100, "Player 2 Character", "p2char"),
         new ColorInput(10, 10, 30, "Player 1 Color Picker", "p1Color", 255, 0, 0),
         new ColorInput(960, 10, 30, "Player 2 Color Picker", "p2Color", 0, 0, 255)
         
@@ -43,6 +44,13 @@ MainWindow::MainWindow()
         new TextInput(225, 350, 550, "PLACEHOLDER", "tournName")
         
     };
+
+    _widgets3 = {
+        new BackButton(50, 50, 100, 40),
+        new TextInput(225, 350, 550, "PLACEHOLDER", "tournName")
+        
+    };
+
 
     //std::vector<Character> charList = loadCharacters(); 
     //is this slow? should we preload and save somewhere otherwise we have to load all characters each
@@ -63,6 +71,7 @@ MainWindow::MainWindow()
         // load css image
         ImageContainer::get()->loadImage(charList[i].getName() + "_css", "res/characters/" + charList[i].getName() + "/css.png");
         _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", charList[i]));
+        _widgets3.push_back(new CharacterButton(x, y, 0, "Player 2 CharacterButton " + std::to_string(i), "p2Character", charList[i]));
         x+=button_x_len+5;
         counter++;
 
@@ -84,6 +93,10 @@ MainWindow::~MainWindow()
         delete w;
     }
     for (Widget* w : _widgets2)
+    {
+        delete w;
+    }
+    for (Widget* w : _widgets3) 
     {
         delete w;
     }
@@ -158,11 +171,20 @@ void MainWindow::render(SDL_Window* renderwindow)
             }
             */
     }
-    else {
+    else if(WindowState::get() -> getState() == 1) {
+
         for (Widget* w : _widgets2)
         {
             w->render();
         }
+
+    } else {
+
+        for (Widget* w : _widgets3)
+        {
+            w->render();
+        }
+        
     }
     //testing text inputs
     // if (ImGui::Button("Print Inputs"))

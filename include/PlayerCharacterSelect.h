@@ -15,9 +15,10 @@ private:
     std::string name;
     std::string label;
     std::string jsonLabel;
+    bool player1;
 
 public:
-    PlayerCharacterSelect(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");
+    PlayerCharacterSelect(bool player1, int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");
     void render() override;
     unsigned int getCostume();
     std::string getName();

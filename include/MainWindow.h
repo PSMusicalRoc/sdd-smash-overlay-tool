@@ -19,6 +19,7 @@ class MainWindow
 private:
     std::vector<Widget*> _widgets;
     std::vector<Widget*> _widgets2;
+    std::vector<Widget*> _widgets3;
 
     static WindowMode currMode;
 

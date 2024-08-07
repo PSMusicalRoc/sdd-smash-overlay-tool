@@ -14,7 +14,7 @@ private:
    std::string jsonLabel;
 
 public:
-   SearchBar(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");
+   SearchBar(int x, int y, int width, const std::string& label = "");
    void render() override;
 
    std::string getText();

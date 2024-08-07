@@ -46,6 +46,10 @@ void CharacterButton::render()
         if(ImGui::ImageButton(("##" + _label).c_str(), my_tex_id, size)){
             Update::get()->set(this->_json_label, this->getName());
             WindowState::get()->WindowState::set(0);
+
+            Search::get()->Search::set("");
+
+
         }
     }
 }

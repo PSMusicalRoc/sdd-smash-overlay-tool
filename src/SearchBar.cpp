@@ -10,14 +10,14 @@
 #include "Search.h"
 
 
-SearchBar::SearchBar(int x, int y, int width, const std::string& label, const std::string& jsonLabel)
+SearchBar::SearchBar(int x, int y, int width, const std::string& label)
     :Widget(x, y, width, 0)
 {
     this->label = label;
     this->text = "";
-    this->jsonLabel = jsonLabel;
+    //this->jsonLabel = jsonLabel;
 
-    Update::get()->set(jsonLabel, "");
+    //Update::get()->set(jsonLabel, "");
 }
 
 
@@ -31,5 +31,6 @@ void SearchBar::render()
     if (ImGui::InputTextWithHint(("##" + label).c_str(), label.c_str(),  &(this->text)))
     {
         Search::get()->set(this->text);
+        text = "";
     }
 }

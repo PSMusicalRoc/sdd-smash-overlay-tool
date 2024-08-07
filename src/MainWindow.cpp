@@ -18,6 +18,7 @@
 #include <nlohmann/json.hpp>
 
 #include "WindowState.h"
+#include "SearchBar.h"
 
 
 WindowMode MainWindow::_curr_mode = MAINWINDOW;
@@ -40,12 +41,13 @@ MainWindow::MainWindow()
     };
 
     _widgets2 = {
-        new BackButton(50, 50, 100, 40)
+        new BackButton(50, 50, 100, 40),
+        new SearchBar(250, 50, 600, "SearchBar", "SearchBar")
     };
 
     _widgets3 = {
         new BackButton(50, 50, 100, 40),
-        new TextInput(225, 350, 550, "PLACEHOLDER", "tournName")
+        new SearchBar(250, 50, 600, "SearchBar", "SearchBar")
         
     };
 

@@ -94,19 +94,24 @@ std::vector<Character> MainWindow::loadCharacters()
 
     //loop through all characters in "res/characters"
     std::string path = "res/characters";
-    for (const std::filesystem::directory_entry & entry : std::filesystem::directory_iterator(path))
-    {
-        //get the character file name 
-        std::string name = entry.path().stem().string();
-        //std::cout << name << std::endl; //print for testing
-        
-        //get info from json
-        std::ifstream f("res/characters/" + name + "/info.json");
-        nlohmann::json info = nlohmann::json::parse(f);
-        std::vector<std::string> aliases(info["aliases"]);
+    std::ifstream iconOrder("res/iconOrder.txt");
+    std::string line;
+    while(std::getline(iconOrder, line)){
+        for (const std::filesystem::directory_entry & entry : std::filesystem::directory_iterator(path))
+        {
+            //get the character file name 
+            std::string name = entry.path().stem().string();
+            if(name == line){
+                //get info from json
+                std::ifstream f("res/characters/" + name + "/info.json");
+                nlohmann::json info = nlohmann::json::parse(f);
+                std::vector<std::string> aliases(info["aliases"]);
 
-        //add character to vector
-        chars.push_back(Character(name, aliases));
+                //add character to vector
+                chars.push_back(Character(name, aliases));
+                break;
+            }
+        }
     }
     return chars;
 }

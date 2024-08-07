@@ -11,11 +11,11 @@
 class PlayerCharacterSelect: public Widget
 {
 private:
-    unsigned int costume;
-    std::string name;
-    std::string label;
-    std::string jsonLabel;
-    bool player1;
+    unsigned int _costume;
+    std::string _name;
+    std::string _label;
+    std::string _json_label;
+    bool _is_player_one;
 
 public:
     PlayerCharacterSelect(bool player1, int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");

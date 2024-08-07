@@ -1,8 +1,9 @@
 {
-    "p1Character": "Mario",
+    "p1Character": "default",
+    "p1Color": "#ff0000ff",
     "p1Name": "",
     "p1Score": 0,
-    "p1char": "default",
+    "p2Color": "#0000ffff",
     "p2Name": "",
     "p2Score": 0,
     "round": "",

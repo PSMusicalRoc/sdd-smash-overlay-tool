@@ -12,7 +12,7 @@ private:
    
 
     // Default Constructor (for singleton)
-    int state;
+    int _state;
 
 
     WindowState();
@@ -22,9 +22,9 @@ public:
     static void destroy();
 
     
-    void set(int new_state) { this -> state = new_state; }
+    void set(int new_state) { this -> _state = new_state; }
 
-    int getState() const {return state; }
+    int getState() const {return _state; }
 
 };
 

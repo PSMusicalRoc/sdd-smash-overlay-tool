@@ -24,8 +24,6 @@ PlayerCharacterSelect::PlayerCharacterSelect(bool player1, int x, int y, int wid
         //1000, 500, SDL_WINDOW_SHOWN
     //);
      bool r = false;
-
-    Update::get()->set(json_label, "default");
 }
 
 void PlayerCharacterSelect::render()

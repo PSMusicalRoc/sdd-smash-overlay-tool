@@ -40,7 +40,9 @@ void CharacterButton::render()
     ImGui::SetCursorPos(ImVec2(_x, _y));
     ImGui::SetNextItemWidth(_width); //don't think this is being used on ImageButton
 
-    ImTextureID my_tex_id = ImageContainer::get()->getImage(_character.getName() + "_css");
+    //ImTextureID my_tex_id = ImageContainer::get()->getImage(key); 
+
+    ImTextureID my_tex_id = ImageContainer::get()->getImage(ImageContainer::makeCSSImgKey(_character.getName()));
     ImVec2 size = ImVec2(70.0f, 50.0f);
     if(this->_character.checkName(Search::get() -> getSearch())){
         if(ImGui::ImageButton(("##" + _label).c_str(), my_tex_id, size)){

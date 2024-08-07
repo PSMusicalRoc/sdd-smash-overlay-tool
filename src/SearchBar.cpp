@@ -28,9 +28,11 @@ void SearchBar::render()
     ImGui::SetCursorPos(ImVec2(_x, _y));
     ImGui::SetNextItemWidth(_width);
     // const char* l = label.c_str();
-    if (ImGui::InputTextWithHint(("##" + label).c_str(), label.c_str(),  &(this->text)))
+    //std::string searchResult = Search::get() -> getSearch();
+    if (ImGui::InputTextWithHint(("##" + label).c_str(), label.c_str(),  &(text)))
     {
         Search::get()->set(this->text);
-        text = "";
+        //text = "";
     }
+    text = Search::get() -> getSearch();
 }

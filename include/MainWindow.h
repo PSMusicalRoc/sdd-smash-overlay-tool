@@ -26,7 +26,7 @@ private:
 public:
     MainWindow();
     ~MainWindow();
-    std::vector<Character> loadCharacters();
+    // std::vector<Character> loadCharacters();
     void render(SDL_Window* renderwindow);
 };
 

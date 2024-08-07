@@ -18,9 +18,15 @@ private:
 public:
     static ImageContainer* get();
     static void destroy();
+
+    // Outputs a string key for 
+    static std::string makeCSSImgKey(const std::string& character);
+    static std::string makeCostumeImgKey(const std::string& character, int cost_num);
+    static std::string makeRenderImgKey(const std::string& character, int cost_num);
+
     void setRenderer(SDL_Renderer* ren) { this->_ren_ptr = ren; }
     SDL_Texture* getImage(const std::string& key);
-    SDL_Texture* loadImage(const std::string& key, const std::string& filename);
+    SDL_Texture* loadImage(const std::string& key, const std::string& file_name);
     void unloadImage(const std::string& key);
     void unloadAllImages();
     void deleteContainer();

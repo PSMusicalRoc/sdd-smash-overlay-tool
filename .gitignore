@@ -11,3 +11,5 @@ Makefile
 # res/characters/
 desktop.ini
 html/rpilogo.png
+
+res/overlay-data.json

@@ -1,30 +1,30 @@
-#include "WindowState.h"
+#include "Search.h"
 
 #include "imgui.h"
 #include <iostream>
 #include <fstream>
 
 
-WindowState* WindowState::_reference = nullptr;
+Search* Search::_reference = nullptr;
 
-WindowState::WindowState()
+Search::Search()
 {
     //0 represents main window
     //1 represents player 1 select
     //2 represents player 2 select
-    WindowState::_state = 0;
+    Search::search = "";
 }
 
-WindowState* WindowState::get()
+Search* Search::get()
 {
     if (_reference == nullptr)
     {
-        _reference = new WindowState();
+        _reference = new Search();
     }
     return _reference;
 }
 
-void WindowState::destroy()
+void Search::destroy()
 {
     if (_reference != nullptr)
     {

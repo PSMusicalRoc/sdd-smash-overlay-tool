@@ -6,6 +6,7 @@
 #include <SDL_image.h>
 #include "ImageContainer.h"
 #include "Update.h"
+#include "CharacterCache.h"
 
 #include "MainWindow.h"
 #include "TextInput.h"
@@ -188,6 +189,7 @@ int main(int argc, char** argv)
     }
 
     // uninitialize image cache
+    CharacterCache::destroy();
     ImageContainer::destroy();
     Update::destroy();
 

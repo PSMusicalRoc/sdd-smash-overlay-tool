@@ -11,7 +11,7 @@ private:
     ImVec4 _color;
     std::string _label;
     std::string _json_label;
-    ImVec4 _saved_palette[4];
+    ImVec4 _saved_palette[10];
 
     std::string getHexCode(float r, float g, float b, float a);
     void createPallet();

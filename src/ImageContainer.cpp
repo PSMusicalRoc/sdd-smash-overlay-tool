@@ -27,6 +27,20 @@ void ImageContainer::destroy()
     }
 }
 
+std::string ImageContainer::makeCSSImgKey(const std::string& character)
+{
+    return "css_" + character;
+}
+
+std::string ImageContainer::makeCostumeImgKey(const std::string& character, int cost_num)
+{
+    return "costume_" + character + "_" + std::to_string(cost_num);
+}
+
+std::string ImageContainer::makeRenderImgKey(const std::string& character, int cost_num)
+{
+    return "render_" + character + "_" + std::to_string(cost_num);
+}
 
 SDL_Texture* ImageContainer::getImage(const std::string& key)
 {

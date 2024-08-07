@@ -3,10 +3,11 @@
 #include <algorithm>
 #include "Character.h"
 
-Character::Character(std::string name, std::vector<std::string> aliases)
+Character::Character(std::string name, std::vector<std::string> aliases, int n_costumes)
 {
     this->_name = name;
     this->_aliases = aliases;
+    this->_num_costumes = n_costumes;
     this->_file_path = "res/characters/" + name;
 }
 

@@ -26,7 +26,7 @@ CharacterButton::CharacterButton(int x, int y, int width, const std::string& lab
         
     }
     else{
-        Update::get()->set(json_label, "default"); 
+        Update::get()->set(json_label, "Random"); 
         //tbh playercharacterselect should set p1/p2 character to default since it needs to display
         //the characters before characterbuttons are rendered in anyway
         //if thats the case then characterbutton doesn't have to change json unless its pressed
@@ -40,7 +40,9 @@ void CharacterButton::render()
     ImGui::SetCursorPos(ImVec2(_x, _y));
     ImGui::SetNextItemWidth(_width); //don't think this is being used on ImageButton
 
-    ImTextureID my_tex_id = ImageContainer::get()->getImage(_character.getName() + "_css");
+    //ImTextureID my_tex_id = ImageContainer::get()->getImage(key); 
+
+    ImTextureID my_tex_id = ImageContainer::get()->getImage(ImageContainer::makeCSSImgKey(_character.getName()));
     ImVec2 size = ImVec2(70.0f, 50.0f);
     if(this->_character.checkName(Search::get() -> getSearch())){
         if(ImGui::ImageButton(("##" + _label).c_str(), my_tex_id, size)){

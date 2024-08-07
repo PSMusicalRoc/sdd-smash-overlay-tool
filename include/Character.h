@@ -8,6 +8,7 @@ class Character
 private:
    std::string _name;
    std::vector<std::string> _aliases;
+   int _num_costumes = 0;
    std::string _file_path;
 
 public:
@@ -15,10 +16,11 @@ public:
         _name = "";
         _aliases = {};
     }
-    Character(std::string name, std::vector<std::string> aliases);
+    Character(std::string name, std::vector<std::string> aliases, int n_costumes);
     bool checkName(std::string name);
-    std::string getFilePath() { return this->_file_path; }
-    std::string getName() { return this->_name; }
+    std::string getFilePath() const { return this->_file_path; }
+    std::string getName() const { return this->_name; }
+    int getNumCostumes() const { return this->_num_costumes; }
 };
 
 #endif

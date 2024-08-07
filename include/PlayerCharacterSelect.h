@@ -11,13 +11,13 @@
 class PlayerCharacterSelect: public Widget
 {
 private:
-    unsigned int costume;
-    std::string name;
-    std::string label;
-    std::string jsonLabel;
+    unsigned int _costume;
+    std::string _name;
+    std::string _label;
+    std::string _json_label;
 
 public:
-    PlayerCharacterSelect(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");
+    PlayerCharacterSelect(int x, int y, int width, const std::string& label = "", const std::string& json_label = "");
     void render() override;
     unsigned int getCostume();
     std::string getName();

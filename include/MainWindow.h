@@ -20,14 +20,14 @@ private:
     std::vector<Widget*> _widgets;
     std::vector<Widget*> _widgets2;
 
-    static WindowMode currMode;
+    static WindowMode _curr_mode;
 
 
 public:
     MainWindow();
     ~MainWindow();
     std::vector<Character> loadCharacters();
-    void render(SDL_Window* renderwindow);
+    void render(SDL_Window* render_window);
 };
 
 

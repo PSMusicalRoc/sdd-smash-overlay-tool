@@ -12,7 +12,7 @@ WindowState::WindowState()
     //0 represents main window
     //1 represents player 1 select
     //2 represents player 2 select
-    WindowState::state = 0;
+    WindowState::_state = 0;
 }
 
 WindowState* WindowState::get()

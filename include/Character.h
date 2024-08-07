@@ -6,19 +6,19 @@
 class Character
 {
 private:
-   std::string name;
-   std::vector<std::string> aliases;
-   std::string filePath;
+   std::string _name;
+   std::vector<std::string> _aliases;
+   std::string _file_path;
 
 public:
     Character(){ 
-        name = "";
-        aliases = {};
+        _name = "";
+        _aliases = {};
     }
     Character(std::string name, std::vector<std::string> aliases);
     bool checkName(std::string name);
-    std::string getFilePath() { return this->filePath; }
-    std::string getName() { return this->name; }
+    std::string getFilePath() { return this->_file_path; }
+    std::string getName() { return this->_name; }
 };
 
 #endif

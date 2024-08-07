@@ -8,12 +8,12 @@
 class CharacterButton: public Widget
 {
 private:
-    Character character;
-    std::string label;
-    std::string jsonLabel; //either p1Character or p2Character
+    Character _character;
+    std::string _label;
+    std::string _json_label; //either p1Character or p2Character
 
 public:
-    CharacterButton(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "", const Character& character = Character());
+    CharacterButton(int x, int y, int width, const std::string& label = "", const std::string& json_label = "", const Character& character = Character());
     void render() override;
     const Character& getCharacter();
     std::string getName();

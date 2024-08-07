@@ -46,12 +46,12 @@ MainWindow::MainWindow()
 
     _widgets2 = {
         new BackButton(50, 50, 100, 40),
-        new SearchBar(250, 50, 600, "SearchBar", "SearchBar")
+        new SearchBar(250, 50, 600, "SearchBar")
     };
 
     _widgets3 = {
         new BackButton(50, 50, 100, 40),
-        new SearchBar(250, 50, 600, "SearchBar", "SearchBar")
+        new SearchBar(250, 50, 600, "SearchBar")
         
     };
 

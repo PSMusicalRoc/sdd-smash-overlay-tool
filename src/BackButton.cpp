@@ -1,6 +1,8 @@
 #include "BackButton.h"
 #include "WindowState.h"
 
+#include "Search.h"
+
 #include <imgui.h>
 
 BackButton::BackButton(int x, int y, int width, int height)
@@ -14,5 +16,6 @@ void BackButton::render()
     {
         // set window state back to mainwindow
         WindowState::get()->set(0);
+        Search::get()->set("");
     }
 }

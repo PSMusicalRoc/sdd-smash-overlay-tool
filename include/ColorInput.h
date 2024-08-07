@@ -8,17 +8,16 @@
 class ColorInput: public Widget
 {
 private:
-    ImVec4 color;
-    std::string label;
-    std::string jsonLabel;
-    std::string hex;
-    ImVec4 saved_palette[4];
+    ImVec4 _color;
+    std::string _label;
+    std::string _json_label;
+    ImVec4 _saved_palette[10];
 
     std::string getHexCode(float r, float g, float b, float a);
     void createPallet();
 
 public:
-    ColorInput(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "", float r = 255.0f, float g = 0.0f, float b = 0.0f);
+    ColorInput(int x, int y, int width, const std::string& label = "", const std::string& json_label = "test", float r = 255.0f, float g = 0.0f, float b = 0.0f);
     void render() override;
     ImVec4 getColor();
     std::string getLabel();

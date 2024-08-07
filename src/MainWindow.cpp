@@ -20,9 +20,10 @@
 #include <nlohmann/json.hpp>
 
 #include "WindowState.h"
+#include "SearchBar.h"
 
 
-WindowMode MainWindow::currMode = MAINWINDOW;
+WindowMode MainWindow::_curr_mode = MAINWINDOW;
 
 MainWindow::MainWindow()
 {
@@ -34,7 +35,8 @@ MainWindow::MainWindow()
         new ScoreInput(420, 125, 30, "Player 1 Score", "p1Score"),
         new ScoreInput(550, 125, 30, "Player 2 Score", "p2Score"),
         new UpdateButton(450, 450, 100, 40),
-        new PlayerCharacterSelect(225,100,100, "Player 1 Character", "p1Character"),
+        new PlayerCharacterSelect(true, 225,100,100, "Player 1 Character", "p1char"),
+        new PlayerCharacterSelect(false, 675,100,100, "Player 2 Character", "p2char"),
         new ColorInput(10, 10, 30, "Player 1 Color Picker", "p1Color", 255, 0, 0),
         new ColorInput(960, 10, 30, "Player 2 Color Picker", "p2Color", 0, 0, 255),
         new CostumeSelect(50, 300, 400, 1),
@@ -43,8 +45,16 @@ MainWindow::MainWindow()
     };
 
     _widgets2 = {
-        new BackButton(50, 50, 100, 40)
+        new BackButton(50, 50, 100, 40),
+        new SearchBar(250, 50, 600, "SearchBar", "SearchBar")
     };
+
+    _widgets3 = {
+        new BackButton(50, 50, 100, 40),
+        new SearchBar(250, 50, 600, "SearchBar", "SearchBar")
+        
+    };
+
 
     //std::vector<Character> charList = loadCharacters(); 
     //is this slow? should we preload and save somewhere otherwise we have to load all characters each
@@ -70,13 +80,14 @@ MainWindow::MainWindow()
         // load css image
         ImageContainer::get()->loadImage(ImageContainer::makeCSSImgKey(p.second.getName()), "res/characters/" + p.second.getName() + "/css.png");
         _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", p.second));
+        _widgets3.push_back(new CharacterButton(x, y, 0, "Player 2 CharacterButton " + std::to_string(i), "p2Character", p.second));
         x+=button_x_len+5;
         counter++;
 
         if(counter==row_max){
             counter = 0;
             x = button_x_pos_init;
-            y+=button_y_len+5;
+            y += button_y_len + 5;
         }
 
         for (int j = 1; j <= p.second.getNumCostumes(); j++) {
@@ -124,6 +135,10 @@ MainWindow::~MainWindow()
     {
         delete w;
     }
+    for (Widget* w : _widgets3) 
+    {
+        delete w;
+    }
 }
 
 
@@ -151,7 +166,7 @@ MainWindow::~MainWindow()
 // }
 
 
-void MainWindow::render(SDL_Window* renderwindow)
+void MainWindow::render(SDL_Window* render_window)
 {
     int flags = ImGuiWindowFlags_NoBringToFrontOnFocus |
                 ImGuiWindowFlags_NoCollapse |
@@ -159,9 +174,9 @@ void MainWindow::render(SDL_Window* renderwindow)
                 ImGuiWindowFlags_NoResize |
                 ImGuiWindowFlags_NoTitleBar;
     ImGui::SetNextWindowPos(ImVec2(0, 0));
-    int windowWidth, windowHeight;
-    SDL_GetWindowSize(renderwindow, &windowWidth, &windowHeight);
-    ImGui::SetNextWindowSize(ImVec2(windowWidth, windowHeight));
+    int window_width, window_height;
+    SDL_GetWindowSize(render_window, &window_width, &window_height);
+    ImGui::SetNextWindowSize(ImVec2(window_width, window_height));
 
     ImGui::Begin("MainWindow", (bool*)NULL, flags);
     // PLACE ALL WINDOW RENDERING CODE IN HERE
@@ -195,11 +210,20 @@ void MainWindow::render(SDL_Window* renderwindow)
             }
             */
     }
-    else {
+    else if(WindowState::get() -> getState() == 1) {
+
         for (Widget* w : _widgets2)
         {
             w->render();
         }
+
+    } else {
+
+        for (Widget* w : _widgets3)
+        {
+            w->render();
+        }
+        
     }
     //testing text inputs
     // if (ImGui::Button("Print Inputs"))

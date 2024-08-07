@@ -23,12 +23,12 @@ public:
     static void destroy();
 
     template <typename T>
-    void set(const std::string& jsonKey, const T& data) { this->_data[jsonKey] = data; }
+    void set(const std::string& json_key, const T& data) { this->_data[json_key] = data; }
 
     template <typename T>
-    const T getData(const std::string& jsonKey) { return this->_data[jsonKey]; }
+    const T getData(const std::string& json_key) { return this->_data[json_key]; }
 
-    bool hasKey(const std::string& jsonKey) { return _data.contains(jsonKey); }
+    bool hasKey(const std::string& json_key) { return _data.contains(json_key); }
 
     void update();
 };

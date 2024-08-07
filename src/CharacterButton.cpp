@@ -7,13 +7,14 @@
 #include "Update.h"
 #include "ImageContainer.h"
 #include "WindowState.h"
+#include "Search.h"
 
-CharacterButton::CharacterButton(int x, int y, int width, const std::string& label, const std::string& jsonLabel, const Character& character)
+CharacterButton::CharacterButton(int x, int y, int width, const std::string& label, const std::string& json_label, const Character& character)
     :Widget(x, y, width, 0)
 {
-    this->label = label;
-    this->jsonLabel = jsonLabel;
-    this->character = character;
+    this->_label = label;
+    this->_json_label = json_label;
+    this->_character = character;
 
     //if characterbutton is rendered in multiple times, can not simply set as default as it will
     //override previously selected character. ie. if user presses back, will delete their character
@@ -21,11 +22,11 @@ CharacterButton::CharacterButton(int x, int y, int width, const std::string& lab
 
     //if p1Char == null, set to default
     //if p1Char exists, set to what it is // actually, don't need to do anything
-    if(Update::get()->hasKey(jsonLabel)){
+    if(Update::get()->hasKey(json_label)){
         
     }
     else{
-        Update::get()->set(jsonLabel, "Random"); 
+        Update::get()->set(json_label, "default"); 
         //tbh playercharacterselect should set p1/p2 character to default since it needs to display
         //the characters before characterbuttons are rendered in anyway
         //if thats the case then characterbutton doesn't have to change json unless its pressed
@@ -41,25 +42,27 @@ void CharacterButton::render()
 
     //ImTextureID my_tex_id = ImageContainer::get()->getImage(key); 
 
-    ImTextureID my_tex_id = ImageContainer::get()->getImage(ImageContainer::makeCSSImgKey(character.getName()));
+    ImTextureID my_tex_id = ImageContainer::get()->getImage(ImageContainer::makeCSSImgKey(_character.getName()));
     ImVec2 size = ImVec2(70.0f, 50.0f);
-    if(ImGui::ImageButton(("##" + label).c_str(), my_tex_id, size)){
-        Update::get()->set(this->jsonLabel, this->getName());
-        WindowState::get()->WindowState::set(0);
+    if(this->_character.checkName(Search::get() -> getSearch())){
+        if(ImGui::ImageButton(("##" + _label).c_str(), my_tex_id, size)){
+            Update::get()->set(this->_json_label, this->getName());
+            WindowState::get()->WindowState::set(0);
+        }
     }
 }
 
 const Character& CharacterButton::getCharacter()
 {
-    return character;
+    return _character;
 }
 
 std::string CharacterButton::getName()
 {
-    return character.getName();
+    return _character.getName();
 }
 
 std::string CharacterButton::getLabel()
 {
-    return label;
+    return _label;
 }

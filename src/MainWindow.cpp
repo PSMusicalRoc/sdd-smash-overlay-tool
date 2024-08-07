@@ -18,6 +18,7 @@
 #include <nlohmann/json.hpp>
 
 #include "WindowState.h"
+#include "SearchBar.h"
 
 
 WindowMode MainWindow::currMode = MAINWINDOW;
@@ -39,7 +40,8 @@ MainWindow::MainWindow()
     };
 
     _widgets2 = {
-        new BackButton(50, 50, 100, 40)
+        new BackButton(50, 50, 100, 40),
+        new SearchBar(250, 50, 600, "SearchBar", "SearchBar")
     };
 
     //std::vector<Character> charList = loadCharacters(); 

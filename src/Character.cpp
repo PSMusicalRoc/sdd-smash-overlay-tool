@@ -8,6 +8,7 @@ Character::Character(std::string name, std::vector<std::string> aliases)
     this->name = name;
     this->aliases = aliases;
     this->filePath = "res/characters/" + name;
+
 }
 
 char to_lowercase(unsigned char c)

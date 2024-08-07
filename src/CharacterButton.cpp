@@ -8,6 +8,8 @@
 #include "ImageContainer.h"
 #include "WindowState.h"
 
+#include "Search.h"
+
 CharacterButton::CharacterButton(int x, int y, int width, const std::string& label, const std::string& jsonLabel, const Character& character)
     :Widget(x, y, width, 0)
 {
@@ -40,12 +42,25 @@ void CharacterButton::render()
     ImGui::SetNextItemWidth(_width); //don't think this is being used on ImageButton
 
     //ImTextureID my_tex_id = ImageContainer::get()->getImage(key); 
+    ImTextureID my_tex_id;
+    ImVec2 size;
 
-    ImTextureID my_tex_id = ImageContainer::get()->getImage(character.getName() + "_css");
-    ImVec2 size = ImVec2(70.0f, 50.0f);
-    if(ImGui::ImageButton(("##" + label).c_str(), my_tex_id, size)){
-        Update::get()->set(this->jsonLabel, this->getName());
-        WindowState::get()->WindowState::set(0);
+    /*
+    if(!this->character.checkName(Search::get() -> getSearch())){
+        my_tex_id = ImageContainer::get()->getImage("Mario_css");
+        size = ImVec2(0.0f, 0.0f);
+    }
+    else{
+    */
+    my_tex_id = ImageContainer::get()->getImage(character.getName() + "_css");
+    size = ImVec2(70.0f, 50.0f);
+    //}
+    //ImVec2 size = ImVec2(70.0f, 50.0f);
+    if(this->character.checkName(Search::get() -> getSearch())){
+        if(ImGui::ImageButton(("##" + label).c_str(), my_tex_id, size)){
+            Update::get()->set(this->jsonLabel, this->getName());
+            WindowState::get()->WindowState::set(0);
+        }
     }
 }
 

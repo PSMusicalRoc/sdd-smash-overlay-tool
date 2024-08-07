@@ -2,21 +2,23 @@
 #define EZSTREAM_SEARCH_BAR
 #include <string>
 #include <vector>
+#include <regex>
 
-class SearchBar
+#include "Widget.h"
+
+class SearchBar: public Widget
 {
 private:
-   std::string name;
-   std::vector<std::string> aliases;
-   std::string filePath;
+   std::string text;
+   std::string label;
+   std::string jsonLabel;
 
 public:
-    Character(std::string name, std::vector<std::string> aliases);
-    bool checkName(std::string name);
-    std::string getFilePath() { return this->filePath; }
-    std::string getName() { return this->name; }
+   SearchBar(int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");
+   void render() override;
 
-    std::vector<Character> sea
+   std::string getText();
+   std::string getLabel();
 };
 
 #endif

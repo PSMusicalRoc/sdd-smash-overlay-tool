@@ -18,7 +18,7 @@ private:
     bool _is_player_one;
 
 public:
-    PlayerCharacterSelect(bool player1, int x, int y, int width, const std::string& label = "", const std::string& jsonLabel = "");
+    PlayerCharacterSelect(bool player1, int x, int y, int width, const std::string& label = "", const std::string& json_label = "");
     void render() override;
     unsigned int getCostume();
     std::string getName();

@@ -11,7 +11,7 @@
 #include "WindowState.h"
 
 
-PlayerCharacterSelect::PlayerCharacterSelect(bool player1, int x, int y, int width, const std::string& label, const std::string& jsonLabel)
+PlayerCharacterSelect::PlayerCharacterSelect(bool player1, int x, int y, int width, const std::string& label, const std::string& json_label)
     :Widget(x, y, width, 0)
 {
     this->_is_player_one = player1;
@@ -35,7 +35,7 @@ void PlayerCharacterSelect::render()
     ImGui::SetNextItemWidth(_width);
     
    
-    if(player1) {
+    if(_is_player_one) {
         if (ImGui::Button("P1Select", ImVec2(_width, _height)))
         {
             //Update::get()->set("SelectScreenOpen", "true");

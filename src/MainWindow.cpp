@@ -67,9 +67,9 @@ MainWindow::MainWindow()
     int y = button_y_pos_init;
     for(int i = 0; i < char_list.size(); i++){
         // load css image
-        ImageContainer::get()->loadImage(charList[i].getName() + "_css", "res/characters/" + charList[i].getName() + "/css.png");
-        _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", charList[i]));
-        _widgets3.push_back(new CharacterButton(x, y, 0, "Player 2 CharacterButton " + std::to_string(i), "p2Character", charList[i]));
+        ImageContainer::get()->loadImage(char_list[i].getName() + "_css", "res/characters/" + char_list[i].getName() + "/css.png");
+        _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", char_list[i]));
+        _widgets3.push_back(new CharacterButton(x, y, 0, "Player 2 CharacterButton " + std::to_string(i), "p2Character", char_list[i]));
         x+=button_x_len+5;
         counter++;
 

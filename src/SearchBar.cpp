@@ -31,5 +31,6 @@ void SearchBar::render()
     if (ImGui::InputTextWithHint(("##" + label).c_str(), label.c_str(),  &(this->text)))
     {
         Search::get()->set(this->text);
+        text = "";
     }
 }

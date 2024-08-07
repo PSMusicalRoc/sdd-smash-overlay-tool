@@ -86,11 +86,11 @@ function doUpdate(scInfo) {
 		p1Characters[i].src = "res/characters/" + p1Character + "/icon" + p1Skin + ".png";
 	}
 
-	// var p2Characters = document.getElementsByName("p2Character");
-	// for (var i = 0; i < p2Characters.length; i++)
-	// {
-	// 	p2Characters[i].src = "res/characters/Stock Icons/" + p2Character + "/" + p2Character + " (1).png";
-	// }
+	var p2Characters = document.getElementsByName("p2Character");
+	for (var i = 0; i < p2Characters.length; i++)
+	{
+		p2Characters[i].src = "res/characters/" + p2Character + "/icon" + p2Skin + ".png";
+	}
 
 	document.getElementById("tournament-name").innerHTML = tournName;
 	document.getElementById("round-name").innerHTML = round;

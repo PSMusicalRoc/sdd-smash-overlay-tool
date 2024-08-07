@@ -15,6 +15,7 @@ private:
     std::string _name;
     std::string _label;
     std::string _json_label;
+    std::string _prev_character;
     bool _is_player_one;
 
 public:

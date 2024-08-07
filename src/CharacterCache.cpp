@@ -3,23 +3,29 @@
 #include <nlohmann/json.hpp>
 #include <fstream>
 
-void loadCharacters(std::map<std::string, Character>& characters, const std::string& dirname)
+void loadCharacters(std::vector<Character>& characters, const std::string& dirname)
 {
     //loop through all characters in "res/characters"
-    for (const std::filesystem::directory_entry & entry : std::filesystem::directory_iterator(dirname))
-    {
-        //get the character file name 
-        std::string name = entry.path().stem().string();
-        //std::cout << name << std::endl; //print for testing
-        
-        //get info from json
-        std::ifstream f(dirname + name + "/info.json");
-        nlohmann::json info = nlohmann::json::parse(f);
-        std::vector<std::string> aliases(info["aliases"]);
-        int costumes = info["costumes"];
+    std::string path = "res/characters";
+    std::ifstream iconOrder("res/iconOrder.txt");
+    std::string line;
+    while(std::getline(iconOrder, line)){
+        for (const std::filesystem::directory_entry & entry : std::filesystem::directory_iterator(path))
+        {
+            //get the character file name 
+            std::string name = entry.path().stem().string();
+            if(name == line){
+                //get info from json
+                std::ifstream f("res/characters/" + name + "/info.json");
+                nlohmann::json info = nlohmann::json::parse(f);
+                std::vector<std::string> aliases(info["aliases"]);
+                int num_costumes = info["costumes"];
 
-        //add character to vector
-        characters.emplace(name, Character(name, aliases, costumes));
+                //add character to vector
+                characters.push_back(Character(name, aliases, num_costumes));
+                break;
+            }
+        }
     }
 }
 
@@ -56,7 +62,12 @@ void CharacterCache::destroy()
     _ptr = nullptr;
 }
 
-Character& CharacterCache::getCharacter(const std::string& char_name)
+Character* CharacterCache::getCharacter(const std::string& char_name)
 {
-    return this->_characters[char_name];
+    for ( Character& c : _characters )
+    {
+        if ( c.getName() == char_name )
+            return &c;
+    }
+    return nullptr;
 }

@@ -8,7 +8,7 @@
 class CharacterCache
 {
 private:
-    std::map<std::string, Character> _characters;
+    std::vector<Character> _characters;
     static CharacterCache* _ptr;
 
     const std::string _characters_path = "res/characters/";
@@ -20,8 +20,9 @@ public:
     static CharacterCache* get();
     static void destroy();
 
-    Character& getCharacter(const std::string& char_name);
-    const std::map<std::string, Character>& getCharacters() { return _characters; }
+    Character* getCharacter(const std::string& char_name);
+
+    const std::vector<Character>& getCharacters() { return _characters; }
 };
 
 #endif

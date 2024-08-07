@@ -75,12 +75,12 @@ MainWindow::MainWindow()
 
 
     int i = 0;
-    for (const std::pair<std::string, Character> p : ccache->getCharacters())
+    for (const Character& c : ccache->getCharacters())
     {
         // load css image
-        ImageContainer::get()->loadImage(ImageContainer::makeCSSImgKey(p.second.getName()), "res/characters/" + p.second.getName() + "/css.png");
-        _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", p.second));
-        _widgets3.push_back(new CharacterButton(x, y, 0, "Player 2 CharacterButton " + std::to_string(i), "p2Character", p.second));
+        ImageContainer::get()->loadImage(ImageContainer::makeCSSImgKey(c.getName()), "res/characters/" + c.getName() + "/css.png");
+        _widgets2.push_back(new CharacterButton(x, y, 0, "Player 1 CharacterButton " + std::to_string(i), "p1Character", c));
+        _widgets3.push_back(new CharacterButton(x, y, 0, "Player 2 CharacterButton " + std::to_string(i), "p2Character", c));
         x+=button_x_len+5;
         counter++;
 
@@ -90,8 +90,8 @@ MainWindow::MainWindow()
             y += button_y_len + 5;
         }
 
-        for (int j = 1; j <= p.second.getNumCostumes(); j++) {
-            ImageContainer::get()->loadImage(ImageContainer::makeCostumeImgKey(p.second.getName(), j), "res/characters/" + p.second.getName()
+        for (int j = 1; j <= c.getNumCostumes(); j++) {
+            ImageContainer::get()->loadImage(ImageContainer::makeCostumeImgKey(c.getName(), j), "res/characters/" + c.getName()
                 + "/icon" + std::to_string(j) + ".png");
         }
 

@@ -20,7 +20,10 @@ void CostumeSelect::render()
     std::string character_name = "";
     if (Update::get()->hasKey(update_key))
         character_name = Update::get()->getData<std::string>(update_key);
-    int num_costumes = CharacterCache::get()->getCharacter(character_name).getNumCostumes();
+    Character* c = CharacterCache::get()->getCharacter(character_name);
+    int num_costumes = 0;
+    if ( c != nullptr )
+        num_costumes = c->getNumCostumes();
 
 
 

@@ -35,8 +35,8 @@ MainWindow::MainWindow()
         new ScoreInput(420, 125, 30, "Player 1 Score", "p1Score"),
         new ScoreInput(550, 125, 30, "Player 2 Score", "p2Score"),
         new UpdateButton(450, 450, 100, 40),
-        new PlayerCharacterSelect(true, 225,100,100, "Player 1 Character", "p1char"),
-        new PlayerCharacterSelect(false, 675,100,100, "Player 2 Character", "p2char"),
+        new PlayerCharacterSelect(true, 165, 100, 170, "Player 1 Character", "p1char"),
+        new PlayerCharacterSelect(false, 665, 100, 170, "Player 2 Character", "p2char"),
         new ColorInput(10, 10, 30, "Player 1 Color Picker", "p1Color", 255, 51, 51),
         new ColorInput(960, 10, 30, "Player 2 Color Picker", "p2Color", 40, 132, 244),
         new CostumeSelect(50, 300, 400, 1),
@@ -93,7 +93,11 @@ MainWindow::MainWindow()
         for (int j = 1; j <= c.getNumCostumes(); j++) {
             ImageContainer::get()->loadImage(ImageContainer::makeCostumeImgKey(c.getName(), j), "res/characters/" + c.getName()
                 + "/icon" + std::to_string(j) + ".png");
+            // ImageContainer::get()->loadImage(ImageContainer::makeRenderImgKey(c.getName(), j), "res/characters/" + c.getName()
+                // + "/render" + std::to_string(j) + ".png");
         }
+
+        // ImageContainer::get()->loadImage(ImageContainer::makeRenderImgKey(c.getName(), 1), "images/pikachu.png");
 
         i++;
     }

@@ -7,6 +7,7 @@
 
 #include "Update.h"
 #include "MainWindow.h"
+#include "ImageContainer.h"
 
 #include "WindowState.h"
 
@@ -33,23 +34,47 @@ void PlayerCharacterSelect::render()
     ImGui::SetNextItemWidth(_width);
     
    
+    // if(player1) {
+    //     if (ImGui::Button("P1Select", ImVec2(_width, _height)))
+    //     {
+    //         //Update::get()->set("SelectScreenOpen", "true");
+    //         WindowState::get() -> WindowState::set(1);
+    //     }
+    // } else {
+    //     if (ImGui::Button("P2Select", ImVec2(_width, _height)))
+    //     {
+    //         //Update::get()->set("SelectScreenOpen", "true");
+    //         WindowState::get() -> WindowState::set(2);
+
+    //     }
+    // }
+
+    //Update::get()->getData<std::string>("p1Character"),
+
+    // ImageButton(ImageContainer::get()->loadImage(Update::get()->getData<std::string>("p1Character"), );
+
+    // const std::string path = ""Update::get()->getData<std::string>("p1Character") + 
+
+    std::string cname = "";
+    int costume = 0;
+
     if(_is_player_one) {
-        if (ImGui::Button("P1Select", ImVec2(_width, _height)))
-        {
-            //Update::get()->set("SelectScreenOpen", "true");
+        cname = Update::get()->getData<std::string>("p1Character");
+        costume = Update::get()->getData<int>("p1Skin");
+        if(ImGui::ImageButton(("##" + _label).c_str(), ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
+            Update::get()->set("SelectScreenOpen", "true");
             WindowState::get() -> WindowState::set(1);
         }
     } else {
-        if (ImGui::Button("P2Select", ImVec2(_width, _height)))
-        {
-            //Update::get()->set("SelectScreenOpen", "true");
+        cname = Update::get()->getData<std::string>("p2Character");
+        costume = Update::get()->getData<int>("p2Skin");
+        if(ImGui::ImageButton(("##" + _label).c_str(), ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
+            Update::get()->set("SelectScreenOpen", "true");
             WindowState::get() -> WindowState::set(2);
-
         }
     }
-
-    
 }
+
 
 std::string PlayerCharacterSelect::getLabel()
 {

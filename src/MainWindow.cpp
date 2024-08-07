@@ -32,8 +32,8 @@ MainWindow::MainWindow()
         new ScoreInput(420, 125, 30, "Player 1 Score", "p1Score"),
         new ScoreInput(550, 125, 30, "Player 2 Score", "p2Score"),
         new UpdateButton(450, 450, 100, 40),
-        new PlayerCharacterSelect(true, 225,100,100, "Player 1 Character", "p1char"),
-        new PlayerCharacterSelect(false, 675,100,100, "Player 2 Character", "p2char"),
+        new PlayerCharacterSelect(true, 225,100,300, "Player 1 Character", "p1char"),
+        new PlayerCharacterSelect(false, 675,100,300, "Player 2 Character", "p2char"),
         new ColorInput(10, 10, 30, "Player 1 Color Picker", "p1Color", 255, 0, 0),
         new ColorInput(960, 10, 30, "Player 2 Color Picker", "p2Color", 0, 0, 255)
         

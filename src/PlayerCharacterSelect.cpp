@@ -7,6 +7,7 @@
 
 #include "Update.h"
 #include "MainWindow.h"
+#include "ImageContainer.h"
 
 #include "WindowState.h"
 
@@ -35,23 +36,43 @@ void PlayerCharacterSelect::render()
     ImGui::SetNextItemWidth(_width);
     
    
+    // if(player1) {
+    //     if (ImGui::Button("P1Select", ImVec2(_width, _height)))
+    //     {
+    //         //Update::get()->set("SelectScreenOpen", "true");
+    //         WindowState::get() -> WindowState::set(1);
+    //     }
+    // } else {
+    //     if (ImGui::Button("P2Select", ImVec2(_width, _height)))
+    //     {
+    //         //Update::get()->set("SelectScreenOpen", "true");
+    //         WindowState::get() -> WindowState::set(2);
+
+    //     }
+    // }
+
+    //Update::get()->getData<std::string>("p1Character"),
+
+    // ImageButton(ImageContainer::get()->loadImage(Update::get()->getData<std::string>("p1Character"), );
+
+    // const std::string path = ""Update::get()->getData<std::string>("p1Character") + 
+
+    const std::string path = "images/mario.png";
+    const std::string path2 = "images/pikachu.png";
+
     if(player1) {
-        if (ImGui::Button("P1Select", ImVec2(_width, _height)))
-        {
-            //Update::get()->set("SelectScreenOpen", "true");
+        if(ImGui::ImageButton(("##" + label).c_str(), ImageContainer::get()->loadImage(Update::get()->getData<std::string>("p1Character"), path) ,ImVec2(_width, _width))) {
+            Update::get()->set("SelectScreenOpen", "true");
             WindowState::get() -> WindowState::set(1);
         }
     } else {
-        if (ImGui::Button("P2Select", ImVec2(_width, _height)))
-        {
-            //Update::get()->set("SelectScreenOpen", "true");
+        if(ImGui::ImageButton(("##" + label).c_str(), ImageContainer::get()->loadImage(Update::get()->getData<std::string>("p2Character"), path2) ,ImVec2(_width, _width))) {
+            Update::get()->set("SelectScreenOpen", "true");
             WindowState::get() -> WindowState::set(2);
-
         }
     }
-
-    
 }
+
 
 std::string PlayerCharacterSelect::getLabel()
 {

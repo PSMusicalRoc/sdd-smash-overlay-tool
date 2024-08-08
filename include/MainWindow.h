@@ -14,20 +14,22 @@ enum WindowMode {
     P2SELECT
 };
 
+//the main window that everything is displayed on
 class MainWindow
 {
-private:
-    std::vector<Widget*> _widgets;
-    std::vector<Widget*> _widgets2;
-    std::vector<Widget*> _widgets3;
+private: 
+    std::vector<Widget*> _widgets; //widgets for main window
+    std::vector<Widget*> _widgets2; //widgets for player 1 character select
+    std::vector<Widget*> _widgets3; //widgets for player 2 character select
 
+    //current active window
     static WindowMode _curr_mode;
 
 
 public:
     MainWindow();
     ~MainWindow();
-    std::vector<Character> loadCharacters();
+    //render all widgets of the active window
     void render(SDL_Window* render_window);
 };
 

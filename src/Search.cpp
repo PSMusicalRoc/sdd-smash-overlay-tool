@@ -12,7 +12,7 @@ Search::Search()
     //0 represents main window
     //1 represents player 1 select
     //2 represents player 2 select
-    Search::search = "";
+    Search::_search = "";
 }
 
 Search* Search::get()

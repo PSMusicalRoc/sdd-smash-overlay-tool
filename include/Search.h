@@ -4,27 +4,28 @@
 #include <string>
 #include "nlohmann/json.hpp"
 
+// singleton that stores the current search term
 class Search
 {
 private:
-    static Search* _reference;
+    static Search* _reference; // reference to singleton
 
-   
+    std::string _search; //current search
 
     // Default Constructor (for singleton)
-    std::string search;
-
-
     Search();
 
 public:
+    // get reference to the singleton
     static Search* get();
+
     static void destroy();
 
-    
-    void set(std::string new_search) { this -> search = new_search; }
+    // set _search
+    void set(std::string new_search) { this -> _search = new_search; }
 
-    std::string getSearch() const {return search; }
+    // get _search
+    std::string getSearch() const {return _search; }
 
 };
 

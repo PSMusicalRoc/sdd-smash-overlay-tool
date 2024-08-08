@@ -16,6 +16,7 @@ private:
     std::string _name; // current character's name
     std::string _label; // label of the widget
     std::string _json_label; // the label used for the json
+    std::string _prev_character; // previous chosen character
     bool _is_player_one; // true if the button corresponds to player 1
 
 public:

@@ -47,6 +47,7 @@ PlayerCharacterSelect::PlayerCharacterSelect(bool player1, int x, int y, int wid
     this->_json_label = json_label;
     this->_name = "default";
     this->_prev_character = "";
+    Update::get()->set(json_label, "Random"); 
 }
 
 void PlayerCharacterSelect::render()
@@ -90,7 +91,6 @@ void PlayerCharacterSelect::render()
 
         costume = Update::get()->getData<int>("p1Skin");
         if(ImGui::ImageButton(("##" + _label).c_str(), ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
-            Update::get()->set("SelectScreenOpen", "true");
             WindowState::get() -> WindowState::set(1);
         }
     } else {
@@ -103,7 +103,6 @@ void PlayerCharacterSelect::render()
 
         costume = Update::get()->getData<int>("p2Skin");
         if(ImGui::ImageButton(("##" + _label).c_str(), ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
-            Update::get()->set("SelectScreenOpen", "true");
             WindowState::get() -> WindowState::set(2);
         }
     }

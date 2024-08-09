@@ -39,10 +39,8 @@ void ScoreInput::render()
     ImGui::SetCursorPos(ImVec2(_x, _y + 25));
     if (ImGui::ArrowButton(("##" + _label + "downButton").c_str(), ImGuiDir_Down)) 
     { 
-        if(_score == 0){
-            
-        }
-        else{
+        if(_score > 0)
+        {
             _score--;
             Update::get()->set(_json_label, _score);
         }

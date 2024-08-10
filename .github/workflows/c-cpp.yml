@@ -43,6 +43,8 @@ jobs:
         echo "${MINGW_PREFIX}/bin/SDL2.dll"
         cp "${MINGW_PREFIX}/bin/SDL2.dll" ./
         cp "${MINGW_PREFIX}/bin/SDL2_image.dll" ./
+        cp "${MINGW_PREFIX}/bin/libgcc_s_seh-1.dll" ./
+        cp "${MINGW_PREFIX}/bin/libstdc++-6.dll" ./
     - name: Add artifact to Actions run
       uses: actions/upload-artifact@v4
       with:
@@ -50,6 +52,9 @@ jobs:
         path: |
           ez-stream-tool.exe
           SDL2.dll
+          SDL2_image.dll
+          libgcc_s_seh-1.dll
+          libstdc++-6.dll
           overlay.html
           res
 

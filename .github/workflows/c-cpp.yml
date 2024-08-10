@@ -1,19 +1,8 @@
 name: C/C++ CI
 
 # mv build/Release/SDL2.dll ./
-# cp "${MINGW_PREFIX}/bin/libgcc_s_seh-1.dll" ./
-#         cp "${MINGW_PREFIX}/bin/libstdc++-6.dll" ./
-#         cp "${MINGW_PREFIX}/bin/libwinpthread-1.dll" ./
-#         cp "${MINGW_PREFIX}/bin/libavif-16.dll" ./
-#         cp "${MINGW_PREFIX}/bin/libjpeg-8.dll" ./
-#         cp "${MINGW_PREFIX}/bin/libjxl.dll" ./
 
-# libgcc_s_seh-1.dll
-#           libstdc++-6.dll
-#           libwinpthread-1.dll
-#           libavif-16.dll
-#           libjpeg-8.dll
-#           libjxl.dll
+
 
 on:
   push:
@@ -56,6 +45,15 @@ jobs:
         echo "${MINGW_PREFIX}/bin/SDL2.dll"
         cp "${MINGW_PREFIX}/bin/SDL2.dll" ./
         cp "${MINGW_PREFIX}/bin/SDL2_image.dll" ./
+        cp "${MINGW_PREFIX}/bin/libgcc_s_seh-1.dll" ./
+        cp "${MINGW_PREFIX}/bin/libstdc++-6.dll" ./
+        cp "${MINGW_PREFIX}/bin/libwinpthread-1.dll" ./
+        cp "${MINGW_PREFIX}/bin/libavif-16.dll" ./
+        cp "${MINGW_PREFIX}/bin/libtiff-5.dll" ./
+        cp "${MINGW_PREFIX}/bin/libwebp-7.dll" ./
+        cp "${MINGW_PREFIX}/bin/libwebpdemux-2.dll" ./
+        cp "${MINGW_PREFIX}/bin/libjpeg-8.dll" ./
+        cp "${MINGW_PREFIX}/bin/libjxl.dll" ./
     - name: Add artifact to Actions run
       uses: actions/upload-artifact@v4
       with:
@@ -64,6 +62,15 @@ jobs:
           ez-stream-tool.exe
           SDL2.dll
           SDL2_image.dll
+          libgcc_s_seh-1.dll
+          libstdc++-6.dll
+          libwinpthread-1.dll
+          libavif-16.dll
+          libtiff-5.dll
+          libwebp-7.dll
+          libwebpdemux-2.dll
+          libjpeg-8.dll
+          libjxl.dll
           overlay.html
           res
 

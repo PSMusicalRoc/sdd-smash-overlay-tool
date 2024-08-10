@@ -35,6 +35,9 @@ jobs:
     - name: Test SDL installation
       run: |
         pkg-config sdl2 --cflags
+        pkg-config sdl2 --libs
+        pkg-config SDL2_image --cflags
+        pkg-config SDL2_image --libs
     - name: Generate Build Configuration (Premake)
       run: ./create-makefile-windows.bat
     - name: Build Tool (make)

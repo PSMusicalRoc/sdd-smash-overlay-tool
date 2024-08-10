@@ -55,8 +55,13 @@ includedirs {
     -- sdl_params.include_dir
 }
 
+filter "system:windows"
+    linkoptions { "-static-libgcc", "-static-libstdc++" }
+
+filter ""
+
 buildoptions { "`sdl2-config --cflags`", "`pkg-config SDL2_image --cflags`" }
-linkoptions  { "-static", "-static-libgcc", "-static-libstdc++", "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
+linkoptions  { "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
 
 filter "configurations:Debug"
     symbols "On"

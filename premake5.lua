@@ -56,7 +56,7 @@ includedirs {
 }
 
 buildoptions { "`sdl2-config --cflags`", "`pkg-config SDL2_image --cflags`" }
-linkoptions  { "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
+linkoptions  { "-static", "-static-libgcc", "-static-libstdc++", "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
 
 filter "configurations:Debug"
     symbols "On"
@@ -65,10 +65,6 @@ filter "configurations:Release"
     defines { "EZSTREAM_RELEASE" }
 
 filter "system:windows"
-    buildoptions {
-        "-static-libgcc", "-static-libstdc++"
-    }
-
     postbuildcommands {
         "cp $${MINGW_PREFIX}/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll",
         "cp $${MINGW_PREFIX}/bin/SDL2_image.dll build/%{cfg.buildcfg}/SDL2_image.dll"

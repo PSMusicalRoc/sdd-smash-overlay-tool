@@ -45,6 +45,10 @@ jobs:
         cp "${MINGW_PREFIX}/bin/SDL2_image.dll" ./
         cp "${MINGW_PREFIX}/bin/libgcc_s_seh-1.dll" ./
         cp "${MINGW_PREFIX}/bin/libstdc++-6.dll" ./
+        cp "${MINGW_PREFIX}/bin/libwinpthread-1.dll" ./
+        cp "${MINGW_PREFIX}/bin/libavif-16.dll" ./
+        cp "${MINGW_PREFIX}/bin/libjpeg-8.dll" ./
+        cp "${MINGW_PREFIX}/bin/libjxl.dll" ./
     - name: Add artifact to Actions run
       uses: actions/upload-artifact@v4
       with:

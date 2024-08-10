@@ -25,11 +25,11 @@ jobs:
     - uses: msys2/setup-msys2@v2
       with:
         update: true
-        msystem: mingw32
+        msystem: ucrt64
         install: >-
-          mingw-w64-i686-toolchain
-          mingw-w64-i686-SDL2
-          mingw-w64-i686-SDL2_image
+          mingw-w64-ucrt-x86_64-toolchain
+          mingw-w64-ucrt-x86_64-SDL2
+          mingw-w64-ucrt-x86_64-SDL2_image
           make
           zip
     - name: Test SDL installation
@@ -48,7 +48,7 @@ jobs:
         echo "${MINGW_PREFIX}/bin/SDL2.dll"
         cp "${MINGW_PREFIX}/bin/SDL2.dll" ./
         cp "${MINGW_PREFIX}/bin/SDL2_image.dll" ./
-        cp "${MINGW_PREFIX}/bin/libgcc_s_dw2-1.dll" ./
+        cp "${MINGW_PREFIX}/bin/libgcc_s_seh-1.dll" ./
         cp "${MINGW_PREFIX}/bin/libstdc++-6.dll" ./
         cp "${MINGW_PREFIX}/bin/libwinpthread-1.dll" ./
         cp "${MINGW_PREFIX}/bin/libavif-16.dll" ./
@@ -74,7 +74,7 @@ jobs:
           ez-stream-tool.exe
           SDL2.dll
           SDL2_image.dll
-          libgcc_s_dw2-1.dll
+          libgcc_s_seh-1.dll
           libstdc++-6.dll
           libwinpthread-1.dll
           libavif-16.dll

@@ -2,7 +2,41 @@ name: C/C++ CI
 
 # mv build/Release/SDL2.dll ./
 
+# libstdc++-6.dll
+#           libwinpthread-1.dll
+#           libavif-16.dll
+#           libpng16-16.dll
+#           libtiff-6.dll
+#           libtiffxx-6.dll
+#           libwebp-7.dll
+#           libsharpyuv-0.dll
+#           libwebpdecoder-3.dll
+#           libwebpmux-3.dll
+#           libwebpdemux-2.dll
+#           libjpeg-8.dll
+#           libturbojpeg.dll
+#           libjxl.dll
+#           libjxl_cms.dll
+#           libjxl_extras_codec.dll
+#           libjxl_threads.dll
 
+# cp "${MINGW_PREFIX}/bin/libstdc++-6.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libwinpthread-1.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libavif-16.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libpng16-16.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libtiff-6.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libtiffxx-6.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libwebp-7.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libsharpyuv-0.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libwebpdecoder-3.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libwebpmux-3.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libwebpdemux-2.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libjpeg-8.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libturbojpeg.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libjxl.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libjxl_cms.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libjxl_extras_codec.dll" ./
+#         cp "${MINGW_PREFIX}/bin/libjxl_threads.dll" ./
 
 on:
   push:
@@ -49,23 +83,6 @@ jobs:
         cp "${MINGW_PREFIX}/bin/SDL2.dll" ./
         cp "${MINGW_PREFIX}/bin/SDL2_image.dll" ./
         cp "${MINGW_PREFIX}/bin/libgcc_s_seh-1.dll" ./
-        cp "${MINGW_PREFIX}/bin/libstdc++-6.dll" ./
-        cp "${MINGW_PREFIX}/bin/libwinpthread-1.dll" ./
-        cp "${MINGW_PREFIX}/bin/libavif-16.dll" ./
-        cp "${MINGW_PREFIX}/bin/libpng16-16.dll" ./
-        cp "${MINGW_PREFIX}/bin/libtiff-6.dll" ./
-        cp "${MINGW_PREFIX}/bin/libtiffxx-6.dll" ./
-        cp "${MINGW_PREFIX}/bin/libwebp-7.dll" ./
-        cp "${MINGW_PREFIX}/bin/libsharpyuv-0.dll" ./
-        cp "${MINGW_PREFIX}/bin/libwebpdecoder-3.dll" ./
-        cp "${MINGW_PREFIX}/bin/libwebpmux-3.dll" ./
-        cp "${MINGW_PREFIX}/bin/libwebpdemux-2.dll" ./
-        cp "${MINGW_PREFIX}/bin/libjpeg-8.dll" ./
-        cp "${MINGW_PREFIX}/bin/libturbojpeg.dll" ./
-        cp "${MINGW_PREFIX}/bin/libjxl.dll" ./
-        cp "${MINGW_PREFIX}/bin/libjxl_cms.dll" ./
-        cp "${MINGW_PREFIX}/bin/libjxl_extras_codec.dll" ./
-        cp "${MINGW_PREFIX}/bin/libjxl_threads.dll" ./
     - name: Add artifact to Actions run
       uses: actions/upload-artifact@v4
       with:
@@ -75,23 +92,6 @@ jobs:
           SDL2.dll
           SDL2_image.dll
           libgcc_s_seh-1.dll
-          libstdc++-6.dll
-          libwinpthread-1.dll
-          libavif-16.dll
-          libpng16-16.dll
-          libtiff-6.dll
-          libtiffxx-6.dll
-          libwebp-7.dll
-          libsharpyuv-0.dll
-          libwebpdecoder-3.dll
-          libwebpmux-3.dll
-          libwebpdemux-2.dll
-          libjpeg-8.dll
-          libturbojpeg.dll
-          libjxl.dll
-          libjxl_cms.dll
-          libjxl_extras_codec.dll
-          libjxl_threads.dll
           overlay.html
           res
 

@@ -75,7 +75,7 @@ filter "system:linux"
 
 filter "system:windows"
     buildoptions { "`sdl2-config --cflags`", "`pkg-config SDL2_image --cflags`" }
-    linkoptions  { "-static-libgcc", "-static-libstdc++", "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
+    linkoptions  { "-Wl,Bstatic", "`sdl2-config --libs`",  "`pkg-config SDL2_image --libs`"}
     postbuildcommands {
         "cp $${MINGW_PREFIX}/bin/SDL2.dll build/%{cfg.buildcfg}/SDL2.dll",
         "cp $${MINGW_PREFIX}/bin/SDL2_image.dll build/%{cfg.buildcfg}/SDL2_image.dll"

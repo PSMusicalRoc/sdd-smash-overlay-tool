@@ -4,10 +4,8 @@
 class Widget
 {
 protected:
-    // supplied width and height of object
-    int _width, _height;
-    // supplied x and y position of the object
-    int _x, _y;
+    int _width, _height; // supplied width and height of object
+    int _x, _y; // supplied x and y position of the object
 
     Widget(int x, int y, int width, int height);
 

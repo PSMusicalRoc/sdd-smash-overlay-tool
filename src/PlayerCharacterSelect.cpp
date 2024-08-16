@@ -55,28 +55,6 @@ void PlayerCharacterSelect::render()
     
     ImGui::SetCursorPos(ImVec2(_x, _y));
     ImGui::SetNextItemWidth(_width);
-    
-   
-    // if(player1) {
-    //     if (ImGui::Button("P1Select", ImVec2(_width, _height)))
-    //     {
-    //         //Update::get()->set("SelectScreenOpen", "true");
-    //         WindowState::get() -> WindowState::set(1);
-    //     }
-    // } else {
-    //     if (ImGui::Button("P2Select", ImVec2(_width, _height)))
-    //     {
-    //         //Update::get()->set("SelectScreenOpen", "true");
-    //         WindowState::get() -> WindowState::set(2);
-
-    //     }
-    // }
-
-    //Update::get()->getData<std::string>("p1Character"),
-
-    // ImageButton(ImageContainer::get()->loadImage(Update::get()->getData<std::string>("p1Character"), );
-
-    // const std::string path = ""Update::get()->getData<std::string>("p1Character") + 
 
     std::string cname = "";
     int costume = 0;

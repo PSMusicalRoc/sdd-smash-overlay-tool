@@ -26,6 +26,8 @@ void CharacterButton::render()
     if(this->_character.checkName(Search::get()->getSearch())){
         if(ImGui::ImageButton(("##" + _label).c_str(), my_tex_id, size)){
             Update::get()->set(this->_json_label, this->getName());
+            std::string skin_json_label = this->_json_label.substr(0, 2) + "Skin";
+            Update::get()->set(skin_json_label, 1);
             WindowState::get()->WindowState::set(0);
             Search::get()->Search::set("");
         }

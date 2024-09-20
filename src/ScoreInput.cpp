@@ -21,11 +21,6 @@ void ScoreInput::render()
     
     ImGui::SetCursorPos(ImVec2(_x, _y));
     ImGui::SetNextItemWidth(_width);
-    // const char* l = label.c_str();
-    // if (ImGui::InputTextWithHint(("##" + label).c_str(), "0",  &(this->score), ImGuiInputTextFlags_CharsDecimal))
-    // {
-    //     Update::get()->set(this->jsonLabel, this->score);
-    // }
     if(ImGui::InputScalar(("##" + _label).c_str(), ImGuiDataType_U16, &_score, NULL, NULL, "%u"))
     {
         Update::get()->set(_json_label, _score);
@@ -33,7 +28,10 @@ void ScoreInput::render()
     ImGui::SetCursorPos(ImVec2(_x, _y - 25));
     if (ImGui::ArrowButton(("##" + _label + "upButton").c_str(), ImGuiDir_Up)) 
     { 
-        _score++;
+        if (_score < 65535)
+        {
+            _score = 65535;
+        }
         Update::get()->set(_json_label, _score);
     }
     ImGui::SetCursorPos(ImVec2(_x, _y + 25));

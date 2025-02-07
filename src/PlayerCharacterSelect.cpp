@@ -68,7 +68,7 @@ void PlayerCharacterSelect::render()
         }
 
         costume = Update::get()->getData<int>("p1Skin");
-        if(ImGui::ImageButton(("##" + _label).c_str(), ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
+        if(ImGui::ImageButton(("##" + _label).c_str(), (ImTextureID)(intptr_t)ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
             WindowState::get() -> WindowState::set(1);
         }
     } else {
@@ -80,7 +80,7 @@ void PlayerCharacterSelect::render()
         }
 
         costume = Update::get()->getData<int>("p2Skin");
-        if(ImGui::ImageButton(("##" + _label).c_str(), ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
+        if(ImGui::ImageButton(("##" + _label).c_str(), (ImTextureID)(intptr_t)ImageContainer::get()->getImage(ImageContainer::makeRenderImgKey(cname, costume)) ,ImVec2(_width, _width))) {
             WindowState::get() -> WindowState::set(2);
         }
     }

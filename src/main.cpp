@@ -127,6 +127,9 @@ int main(int argc, char** argv)
     io.Fonts->AddFontFromFileTTF("res/fonts/Oswald-VariableFont_wght.ttf", 24.0f);
     // disable imgui ini
     io.IniFilename = NULL;
+
+    io.AppAcceptingEvents = true;
+    
     
     StyleColorsEZStream();
 

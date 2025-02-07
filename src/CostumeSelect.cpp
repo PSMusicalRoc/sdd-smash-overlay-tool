@@ -34,7 +34,7 @@ void CostumeSelect::render()
     {
         if (ImGui::ImageButton(
             (std::to_string(i) + "##" + std::to_string(_player_id)).c_str(),
-            ImageContainer::get()->getImage(ImageContainer::makeCostumeImgKey(character_name, i)),
+            (ImTextureID)(intptr_t)ImageContainer::get()->getImage(ImageContainer::makeCostumeImgKey(character_name, i)),
             ImVec2(30, 30)))
         {
             Update::get()->set<int>("p" + std::to_string(_player_id) + "Skin", i);

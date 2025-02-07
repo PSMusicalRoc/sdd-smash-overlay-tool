@@ -20,7 +20,7 @@ CharacterButton::CharacterButton(int x, int y, int width, const std::string& lab
 void CharacterButton::render()
 {    
     ImGui::SetCursorPos(ImVec2(_x, _y));
-    ImTextureID my_tex_id = ImageContainer::get()->getImage(ImageContainer::makeCSSImgKey(_character.getName()));
+    ImTextureID my_tex_id = (ImTextureID)(intptr_t)ImageContainer::get()->getImage(ImageContainer::makeCSSImgKey(_character.getName()));
     ImVec2 size = ImVec2(70.0f, 50.0f);
 
     if(this->_character.checkName(Search::get()->getSearch())){
